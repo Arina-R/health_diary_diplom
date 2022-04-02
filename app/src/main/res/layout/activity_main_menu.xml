@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="125dp"
-        android:fontFamily="sans-serif"
+        android:fontFamily="@font/bebas_neue"
         android:text="План на день"
         android:textAlignment="center"
         android:textColor="@color/maincolor"
