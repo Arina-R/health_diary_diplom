@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".PageCreate">
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="230dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/bebas_neue"
+        android:text="Создать задачу"
+        android:textAlignment="center"
+        android:textColor="@color/maincolor"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="230dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="270dp"
+        android:fontFamily="@font/bebas_neue"
+        android:text="Шаблоны задач"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/b_back7"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/backgreen"
+        android:foreground="@drawable/backgreen"
+        android:onClick="back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/b_new_task"
+        android:layout_width="340dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="120dp"
+        android:background="@drawable/task"
+        android:foreground="@drawable/task"
+        android:onClick="addTask"
+        android:text="Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/b_kardio"
+        android:layout_width="340dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/kardio"
+        android:foreground="@drawable/kardio"
+        android:text="Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/b_at8am" />
+
+    <Button
+        android:id="@+id/b_at8am"
+        android:layout_width="340dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/at8am"
+        android:foreground="@drawable/at8am"
+        android:text="Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/b_meditation" />
+
+    <Button
+        android:id="@+id/b_meditation"
+        android:layout_width="340dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/meditation"
+        android:foreground="@drawable/meditation"
+        android:text="Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView20" />
+</androidx.constraintlayout.widget.ConstraintLayout>

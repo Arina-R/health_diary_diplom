@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".Create_H_W">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        tools:context=".CreateMenu"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <Button
+            android:id="@+id/b_back"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/backgreen"
+            android:foreground="@drawable/backgreen"
+            android:onClick="back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="230dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/bebas_neue"
+            android:text="Создание"
+            android:textAlignment="center"
+            android:textColor="@color/maincolor"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/ET_position5"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="260dp"
+            android:background="@drawable/greybox"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="174dp"
+            android:layout_height="26dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/bebas_neue"
+            android:text="Вид:"
+            android:textAlignment="textStart"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/ET_position5"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="174dp"
+            android:layout_height="26dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/bebas_neue"
+            android:text="Время:"
+            android:textAlignment="textStart"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/b_morning"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="174dp"
+            android:layout_height="26dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="460dp"
+            android:fontFamily="@font/bebas_neue"
+            android:text="Время:"
+            android:textAlignment="textStart"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/b_day"
+            android:layout_width="90dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="380dp"
+            android:background="@drawable/day"
+            android:foreground="@drawable/day"
+            app:layout_constraintEnd_toStartOf="@+id/b_evening"
+            app:layout_constraintHorizontal_bias="0.513"
+            app:layout_constraintStart_toEndOf="@+id/b_morning"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/b_evening"
+            android:layout_width="90dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="380dp"
+            android:layout_marginEnd="54dp"
+            android:background="@drawable/evening"
+            android:foreground="@drawable/evening"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/b_morning"
+            android:layout_width="90dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="54dp"
+            android:layout_marginTop="380dp"
+            android:background="@drawable/morning"
+            android:foreground="@drawable/morning"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/b_mon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="54dp"
+        android:layout_marginTop="500dp"
+        android:layout_marginEnd="4dp"
+        android:background="@drawable/monday"
+        android:foreground="@drawable/monday"
+        app:layout_constraintEnd_toStartOf="@+id/b_tue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/b_wed"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="500dp"
+            android:layout_marginEnd="4dp"
+            android:background="@drawable/wednesday"
+            android:foreground="@drawable/wednesday"
+            app:layout_constraintEnd_toStartOf="@+id/b_thu"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/b_fri"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="500dp"
+            android:background="@drawable/friday"
+            android:foreground="@drawable/friday"
+            app:layout_constraintStart_toEndOf="@+id/b_thu"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/b_thu"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="500dp"
+            android:background="@drawable/thursday"
+            android:foreground="@drawable/thursday"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/b_sun"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="500dp"
+            android:layout_marginEnd="54dp"
+            android:background="@drawable/sunday"
+            android:foreground="@drawable/sunday"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/b_sat"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/b_tue"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="500dp"
+            android:layout_marginEnd="4dp"
+            android:background="@drawable/tuesday"
+            android:foreground="@drawable/tuesday"
+            app:layout_constraintEnd_toStartOf="@+id/b_wed"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/b_sat"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="500dp"
+            android:background="@drawable/saturday"
+            android:foreground="@drawable/saturday"
+            app:layout_constraintStart_toEndOf="@+id/b_fri"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="136dp"
+            android:layout_height="29dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="95dp"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/bebas_neue"
+            android:text="Название:"
+            android:textAlignment="viewStart"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/ET_position3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/ET_position3"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="140dp"
+            android:background="@drawable/greybox"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/b_save_task"
+        android:layout_width="220dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/save"
+        android:foreground="@drawable/save"
+        android:onClick="saveTask"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>

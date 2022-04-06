@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">health_diary</string>
+    <string name="gl">Главное меню</string>
+    <string name="stat">Статистика</string>
+    <string name="norm">Норма калорий</string>
+    <string name="pit">Питание</string>
+    <string name="workout">Тренировки</string>
+    <string name="habit">Привычки</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

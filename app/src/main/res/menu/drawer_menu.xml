@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item android:title="@string/gl"
+            android:id="@+id/id_gl"
+            android:textStyle="bold"
+            android:fontFamily="@font/bebas_neue"
+            android:textSize="60dp"
+            android:icon="@drawable/krug"/>
+        <item android:title="@string/stat"
+            android:id="@+id/id_stat"
+            android:icon="@drawable/krug"/>
+        <item android:title="@string/norm"
+            android:id="@+id/id_norm"
+            android:icon="@drawable/krug"/>
+        <item android:title="@string/pit"
+            android:id="@+id/id_pit"
+            android:icon="@drawable/krug"/>
+        <item android:title="@string/workout"
+            android:id="@+id/id_workout"
+            android:icon="@drawable/krug"/>
+        <item android:title="@string/habit"
+            android:id="@+id/id_habit"
+            android:icon="@drawable/krug"/>
+    </group>
+
+</menu>
