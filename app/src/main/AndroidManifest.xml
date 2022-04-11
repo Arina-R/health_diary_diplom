@@ -10,31 +10,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Health_diary">
         <activity
-            android:name=".GlMenu"
+            android:name=".Nav_habit"
+            android:exported="false" />
+        <activity
+            android:name=".Nav_Workout"
+            android:exported="false" />
+        <activity
+            android:name=".Nav_Pitanie"
+            android:exported="false" />
+        <activity
+            android:name=".Nav_Norma"
+            android:exported="false" />
+        <activity
+            android:name=".Nav_Stat"
             android:exported="false" />
         <activity
             android:name=".PageCreate"
-            android:exported="false" />
-        <activity
-            android:name=".Statistica"
-            android:exported="false" />
-        <activity
-            android:name=".PageWorkout"
-            android:exported="false" />
-        <activity
-            android:name=".PageHabits"
-            android:exported="false" />
-        <activity
-            android:name=".PageMenu"
             android:exported="false" />
         <activity
             android:name=".MainMenu"
             android:exported="false" />
         <activity
             android:name=".AddPosition"
-            android:exported="false" />
-        <activity
-            android:name=".norm_calculation"
             android:exported="false" />
         <activity
             android:name=".Create_H_W"

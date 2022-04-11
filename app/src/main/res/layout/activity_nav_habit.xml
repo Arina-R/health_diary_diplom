@@ -3,8 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navhabit"
     android:layout_width="match_parent"
-    android:id="@+id/drawerL"
     android:layout_height="match_parent"
     android:background="@color/black"
     android:fitsSystemWindows="true"
@@ -14,23 +14,36 @@
        android:layout_width="match_parent"
        android:layout_height="match_parent">
 
+
        <Button
-           android:id="@+id/bhum1"
-           android:layout_width="42dp"
-           android:layout_height="39dp"
+           android:id="@+id/bhum2"
+           android:layout_width="40dp"
+           android:layout_height="30dp"
+           android:layout_marginStart="20dp"
+           android:layout_marginTop="20dp"
            android:background="@drawable/menu"
            android:foreground="@drawable/menu"
-           android:onClick="menuopenCloseNavigationDrawer"
-           app:layout_constraintBottom_toBottomOf="parent"
-           app:layout_constraintEnd_toEndOf="parent"
-           app:layout_constraintHorizontal_bias="0.042"
+           android:onClick="habitopenCloseNavigationDrawer"
            app:layout_constraintStart_toStartOf="parent"
-           app:layout_constraintTop_toTopOf="parent"
-           app:layout_constraintVertical_bias="0.022" />
+           app:layout_constraintTop_toTopOf="parent" />
 
+       <TextView
+           android:id="@+id/textView12"
+           android:layout_width="230dp"
+           android:layout_height="29dp"
+           android:layout_marginTop="20dp"
+           android:fontFamily="@font/bebas_neue"
+           android:text="Привычки"
+           android:textAlignment="center"
+           android:textColor="@color/maincolor"
+           android:textSize="25sp"
+           android:textStyle="bold"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toTopOf="parent" />
 
        <Button
-           android:id="@+id/b_add_task"
+           android:id="@+id/b_add_habit"
            android:layout_width="60dp"
            android:layout_height="60dp"
            android:layout_marginEnd="20dp"
@@ -45,29 +58,10 @@
            app:layout_constraintStart_toStartOf="parent" />
 
 
-
-       <TextView
-           android:id="@+id/textView21"
-           android:layout_width="230dp"
-           android:layout_height="40dp"
-           android:layout_marginTop="90dp"
-           android:fontFamily="@font/bebas_neue"
-           android:text="План на день"
-           android:textAlignment="center"
-           android:textColor="@color/maincolor"
-           android:textSize="30sp"
-           android:textStyle="bold"
-           app:layout_constraintEnd_toEndOf="parent"
-           app:layout_constraintStart_toStartOf="parent"
-           app:layout_constraintTop_toTopOf="parent" />
-
-
-
-
    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view"
+        android:id="@+id/nav_view1"
         android:layout_width="318dp"
         android:layout_height="695dp"
         android:layout_gravity="start"
@@ -79,4 +73,3 @@
         app:menu="@menu/drawer_menu" />
 
 </androidx.drawerlayout.widget.DrawerLayout>
-

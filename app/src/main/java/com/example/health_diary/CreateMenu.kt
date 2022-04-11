@@ -11,11 +11,11 @@ class CreateMenu : AppCompatActivity() {
         setContentView(R.layout.activity_create_menu)
     }
     fun savePitanie(view: View){
-        val intent = Intent(this, PageMenu::class.java)
+        val intent = Intent(this, Nav_Pitanie::class.java)
         startActivity(intent)
     }
     fun back(view: View){
-        val intent = Intent(this, PageMenu::class.java)
+        val intent = Intent(this, Nav_Pitanie::class.java)
         startActivity(intent)
     }
     fun addPosition(view: View){
