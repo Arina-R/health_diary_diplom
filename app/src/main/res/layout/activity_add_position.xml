@@ -18,7 +18,7 @@
         tools:layout_editor_absoluteY="0dp">
 
         <EditText
-            android:id="@+id/ET_position8"
+            android:id="@+id/ET_positionCalories"
             android:layout_width="300dp"
             android:layout_height="40dp"
             android:layout_marginStart="40dp"
@@ -26,12 +26,15 @@
             android:background="@drawable/greybox"
             android:drawablePadding="10dp"
             android:ems="10"
+            android:gravity="center"
             android:inputType="textPersonName"
+            android:textColor="@color/maincolor"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/ET_position7"
+            android:id="@+id/ET_positionName"
             android:layout_width="300dp"
             android:layout_height="40dp"
             android:layout_marginStart="40dp"
@@ -39,7 +42,10 @@
             android:background="@drawable/greybox"
             android:drawablePadding="10dp"
             android:ems="10"
+            android:gravity="center"
             android:inputType="textPersonName"
+            android:textColor="@color/maincolor"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

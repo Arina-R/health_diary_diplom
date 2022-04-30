@@ -1,6 +1,8 @@
 package com.example.health_diary
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
@@ -12,16 +14,47 @@ import com.google.android.material.navigation.NavigationView
 
 
 class MainMenu : AppCompatActivity(),NavigationView.OnNavigationItemSelectedListener {
+
+    val DbManager = com.example.health_diary.db.DbManager(this )
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_menu)
         val nav_view = findViewById<NavigationView>(R.id.nav_view)
         nav_view.setNavigationItemSelectedListener (this)
+
+
+
+
+
+        //одноразовое использование в проге(при первом запуске)
+        val settings = ""
+        val sp = getSharedPreferences(settings, Context.MODE_PRIVATE)
+        // проверяем, первый ли раз открывается программа
+        val hasVisited = sp.getBoolean("hasVisited", false)
+
+        if (!hasVisited) {
+
+
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+
+            val e: SharedPreferences.Editor = sp.edit()
+            e.putBoolean("hasVisited", true)
+            e.commit() // не забудьте подтвердить изменения
+        }
     }
 
     fun createTask(view: View){
         val intent = Intent(this, PageCreate::class.java)
         startActivity(intent)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        DbManager.openDb()
+
     }
 
     fun menuopenCloseNavigationDrawer(view: View) {

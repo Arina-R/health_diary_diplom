@@ -5,12 +5,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 
 class Nav_Norma : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_nav_norma)
@@ -25,6 +28,39 @@ class Nav_Norma : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
         } else {
             navnorma.openDrawer(GravityCompat.START)
         }
+    }
+
+    var pol = 0
+    var m = 5
+    var f =161
+    var Rost = 1
+    var Ves = 1
+    var Age =1
+    var rr =0
+
+    fun male(view: View){
+        pol=1
+    }
+    fun female(view: View){
+        pol=2
+    }
+
+    fun norma(view: View){
+        val rost = findViewById<EditText>(R.id.ET_rost)
+        Rost = Integer.parseInt(rost.getText().toString())
+        val ves = findViewById<EditText>(R.id.ET_ves)
+        Ves = Integer.parseInt(ves.getText().toString())
+        val age =findViewById<TextView>(R.id.ET_age)
+        Age = Integer.parseInt(age.getText().toString())
+
+        val rez= findViewById<TextView>(R.id.TV_rez)
+        if(pol==1){
+            rr = 10 * Ves +6*Rost-5*Age +5
+        }
+        if(pol==2){
+             rr = 10 * Ves +6*Rost-5*Age -161
+        }
+        rez.text = "$rr ккал в день"
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {

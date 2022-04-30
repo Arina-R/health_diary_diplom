@@ -48,12 +48,20 @@
             android:id="@+id/EdiTextName"
             android:layout_width="300dp"
             android:layout_height="35dp"
-            android:drawablePadding="10dp"
             android:layout_marginHorizontal="20dp"
             android:layout_marginVertical="200dp"
             android:background="@drawable/textbox"
+            android:drawablePadding="10dp"
             android:ems="10"
+            android:gravity="center"
             android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/textView22"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="120dp"
+            android:textColor="@color/black" />
 
     </FrameLayout>
 

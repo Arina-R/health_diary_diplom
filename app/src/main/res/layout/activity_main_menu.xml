@@ -18,6 +18,7 @@
            android:id="@+id/bhum1"
            android:layout_width="42dp"
            android:layout_height="39dp"
+
            android:background="@drawable/menu"
            android:foreground="@drawable/menu"
            android:onClick="menuopenCloseNavigationDrawer"
@@ -27,22 +28,6 @@
            app:layout_constraintStart_toStartOf="parent"
            app:layout_constraintTop_toTopOf="parent"
            app:layout_constraintVertical_bias="0.022" />
-
-
-       <Button
-           android:id="@+id/b_add_task"
-           android:layout_width="60dp"
-           android:layout_height="60dp"
-           android:layout_marginEnd="20dp"
-           android:layout_marginBottom="40dp"
-           android:background="@drawable/add"
-           android:foreground="@drawable/add"
-           android:onClick="createTask"
-           android:text="Button"
-           app:layout_constraintBottom_toBottomOf="parent"
-           app:layout_constraintEnd_toEndOf="parent"
-           app:layout_constraintHorizontal_bias="1.0"
-           app:layout_constraintStart_toStartOf="parent" />
 
 
 
@@ -61,7 +46,29 @@
            app:layout_constraintStart_toStartOf="parent"
            app:layout_constraintTop_toTopOf="parent" />
 
+       <androidx.recyclerview.widget.RecyclerView
+           android:id="@+id/rc_main"
+           android:layout_width="327dp"
+           android:layout_height="651dp"
+           android:layout_marginTop="80dp"
+           android:foregroundGravity="center"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toTopOf="parent" />
 
+       <com.google.android.material.floatingactionbutton.FloatingActionButton
+           android:id="@+id/b_add_task"
+           android:layout_width="60dp"
+           android:layout_height="60dp"
+           android:layout_marginEnd="20dp"
+           android:layout_marginBottom="20dp"
+           android:background="@drawable/add"
+           android:foreground="@drawable/add"
+           android:onClick="createTask"
+           app:layout_constraintBottom_toBottomOf="parent"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintHorizontal_bias="1.0"
+           app:layout_constraintStart_toStartOf="parent" />
 
 
    </androidx.constraintlayout.widget.ConstraintLayout>
@@ -73,6 +80,7 @@
         android:layout_gravity="start"
         android:background="@drawable/rounded"
         android:fitsSystemWindows="true"
+        android:visibility="gone"
         app:headerLayout="@layout/header_menu"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
