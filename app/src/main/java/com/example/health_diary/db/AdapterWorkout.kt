@@ -2,7 +2,6 @@ package com.example.health_diary.db
 
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,10 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.health_diary.Create_H_W
 import com.example.health_diary.R
 
-class AdapterHabit(listHabit:ArrayList<ListItemForHabits>,contextH:Context ): RecyclerView.Adapter<AdapterHabit.Holder>() {
+class AdapterWorkout(listWorkout:ArrayList<ListItemForHabits>,contextW:Context ): RecyclerView.Adapter<AdapterWorkout.Holder>()  {
 
-    var listArray =listHabit
-    var context = contextH
+    var listArray =listWorkout
+    var context = contextW
 
     class Holder(itemView: View,contextVH: Context) : RecyclerView.ViewHolder(itemView) {
 
@@ -49,7 +48,7 @@ class AdapterHabit(listHabit:ArrayList<ListItemForHabits>,contextH:Context ): Re
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-       holder.setData(listArray.get(position))
+        holder.setData(listArray.get(position))
 
     }
 
@@ -58,16 +57,18 @@ class AdapterHabit(listHabit:ArrayList<ListItemForHabits>,contextH:Context ): Re
         listArray.addAll(listItems)
         notifyDataSetChanged()
 
+
     }
 
     fun removeItem(pos: Int, dbManager: DbManager ){
         dbManager.removeTask(listArray[pos].task_ID)
-        dbManager.removeExecution(listArray[pos].task_ID)
 
         listArray.removeAt((pos))
         notifyItemRangeChanged(0,listArray.size)
         notifyItemRemoved(pos)
 
     }
+
+
 
 }

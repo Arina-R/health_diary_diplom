@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">health_diary</string>
+    <string name="app_name">Health Diary</string>
     <string name="gl">Главное меню</string>
     <string name="stat">Статистика</string>
     <string name="norm">Норма калорий</string>

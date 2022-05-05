@@ -8,154 +8,20 @@
     android:onClick="fri"
     tools:context=".Create_H_W">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/black"
-        tools:context=".CreateMenu"
-        tools:layout_editor_absoluteX="-16dp"
-        tools:layout_editor_absoluteY="50dp">
-
-        <Button
-            android:id="@+id/b_back"
-            android:layout_width="40dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/backgreen"
-            android:foreground="@drawable/backgreen"
-            android:onClick="back"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="230dp"
-            android:layout_height="29dp"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/bebas_neue"
-            android:text="Создание"
-            android:textAlignment="center"
-            android:textColor="@color/maincolor"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="174dp"
-            android:layout_height="26dp"
-            android:layout_marginStart="44dp"
-            android:layout_marginBottom="16dp"
-            android:fontFamily="@font/bebas_neue"
-            android:text="Вид:"
-            android:textAlignment="textStart"
-            android:textColor="@color/white"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/b_day2"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="174dp"
-            android:layout_height="26dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginBottom="16dp"
-            android:fontFamily="@font/bebas_neue"
-            android:text="Время:"
-            android:textAlignment="textStart"
-            android:textColor="@color/white"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/b_morning"
-            app:layout_constraintStart_toStartOf="parent" />
-
-
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="174dp"
-            android:layout_height="26dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="460dp"
-            android:fontFamily="@font/bebas_neue"
-            android:text="Время:"
-            android:textAlignment="textStart"
-            android:textColor="@color/white"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/b_day"
-            android:layout_width="90dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="380dp"
-            android:layout_marginEnd="10dp"
-            android:background="@drawable/day"
-            android:foreground="@drawable/day"
-            android:onClick="day"
-            app:layout_constraintEnd_toStartOf="@+id/b_evening"
-            app:layout_constraintHorizontal_bias="0.513"
-            app:layout_constraintStart_toEndOf="@+id/b_morning"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/b_day2"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="260dp"
-            android:background="@drawable/habit"
-            android:foreground="@drawable/habit"
-            android:onClick="bhabit"
-            app:layout_constraintStart_toEndOf="@+id/b_workout"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/b_workout"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="260dp"
-            android:background="@drawable/workout"
-            android:foreground="@drawable/workout"
-            android:onClick="bworkout"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/b_evening"
-            android:layout_width="90dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="380dp"
-            android:layout_marginEnd="55dp"
-            android:background="@drawable/evening"
-            android:foreground="@drawable/evening"
-            android:onClick="evening"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/b_morning"
-            android:layout_width="90dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="54dp"
-            android:layout_marginTop="380dp"
-            android:layout_marginEnd="10dp"
-            android:background="@drawable/morning"
-            android:foreground="@drawable/morning"
-            android:onClick="morning"
-            app:layout_constraintEnd_toStartOf="@+id/b_day"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/b_mon2"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="500dp"
+        android:layout_marginEnd="4dp"
+        android:background="@drawable/back_mon"
+        android:foreground="@drawable/back_mon"
+        android:onClick="mon2"
+        app:layout_constraintEnd_toStartOf="@+id/b_tue2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
         android:id="@+id/b_mon"
@@ -167,9 +33,23 @@
         android:background="@drawable/monday"
         android:foreground="@drawable/monday"
         android:onClick="mon"
-        app:layout_constraintEnd_toStartOf="@+id/b_tue"
+        app:layout_constraintEnd_toStartOf="@+id/b_tue2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/b_wed2"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="500dp"
+        android:layout_marginEnd="4dp"
+        android:background="@drawable/back_wed"
+        android:foreground="@drawable/back_wed"
+        android:onClick="wed2"
+        app:layout_constraintEnd_toStartOf="@+id/b_thu2"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
         android:id="@+id/b_wed"
@@ -180,8 +60,22 @@
         android:background="@drawable/wednesday"
         android:foreground="@drawable/wednesday"
         android:onClick="wed"
-        app:layout_constraintEnd_toStartOf="@+id/b_thu"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/b_thu2"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/b_fri2"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="500dp"
+        android:background="@drawable/back_fri"
+        android:foreground="@drawable/back_fri"
+        android:onClick="fri2"
+        app:layout_constraintStart_toEndOf="@+id/b_thu2"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
         android:id="@+id/b_fri"
@@ -191,8 +85,23 @@
         android:layout_marginTop="500dp"
         android:background="@drawable/friday"
         android:foreground="@drawable/friday"
-        app:layout_constraintStart_toEndOf="@+id/b_thu"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:onClick="fri"
+        app:layout_constraintStart_toEndOf="@+id/b_thu2"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/b_thu2"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="500dp"
+        android:background="@drawable/back_thu"
+        android:foreground="@drawable/back_thu"
+        android:onClick="thu2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
         android:id="@+id/b_thu"
@@ -204,21 +113,51 @@
         android:onClick="thu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/b_sun2"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="500dp"
+        android:layout_marginEnd="50dp"
+        android:background="@drawable/back_sun"
+        android:foreground="@drawable/back_sun"
+        android:onClick="sun2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/b_sat2"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
         android:id="@+id/b_sun"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginStart="4dp"
+        android:layout_marginStart="6dp"
         android:layout_marginTop="500dp"
         android:layout_marginEnd="50dp"
         android:background="@drawable/sunday"
         android:foreground="@drawable/sunday"
         android:onClick="sun"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/b_sat"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/b_sat2"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/b_tue2"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="500dp"
+        android:layout_marginEnd="4dp"
+        android:background="@drawable/back_tue"
+        android:foreground="@drawable/back_tue"
+        android:onClick="tue2"
+        app:layout_constraintEnd_toStartOf="@+id/b_wed2"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
         android:id="@+id/b_tue"
@@ -229,8 +168,22 @@
         android:background="@drawable/tuesday"
         android:foreground="@drawable/tuesday"
         android:onClick="tue"
-        app:layout_constraintEnd_toStartOf="@+id/b_wed"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/b_wed2"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/b_sat2"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="500dp"
+        android:background="@drawable/back_sat"
+        android:foreground="@drawable/back_sat"
+        android:onClick="sat2"
+        app:layout_constraintStart_toEndOf="@+id/b_fri2"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
         android:id="@+id/b_sat"
@@ -240,9 +193,10 @@
         android:layout_marginTop="500dp"
         android:background="@drawable/saturday"
         android:foreground="@drawable/saturday"
-        android:onClick="sut"
-        app:layout_constraintStart_toEndOf="@+id/b_fri"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:onClick="sat"
+        app:layout_constraintStart_toEndOf="@+id/b_fri2"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/textView5"
@@ -274,7 +228,8 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
         android:id="@+id/b_save_task"
@@ -284,8 +239,223 @@
         android:background="@drawable/save"
         android:foreground="@drawable/save"
         android:onClick="savetask"
-        android:text="Button"
+        android:text="Save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/b_back_evening"
+        android:layout_width="90dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="54dp"
+        android:background="@drawable/back_evening"
+        android:foreground="@drawable/back_evening"
+        android:onClick="evening"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/b_back_day"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/b_evening"
+        android:layout_width="90dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="54dp"
+        android:background="@drawable/evening"
+        android:foreground="@drawable/evening"
+        android:onClick="evening"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/b_back_day"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/b_back"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/backgreen"
+        android:foreground="@drawable/backgreen"
+        android:onClick="back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/b_back_habit"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/back_habit"
+        android:foreground="@drawable/back_habit"
+        android:onClick="bhabit"
+        app:layout_constraintStart_toEndOf="@+id/b_back_workout"
+        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/b_habit"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/habit"
+        android:foreground="@drawable/habit"
+        android:onClick="bhabit"
+        app:layout_constraintStart_toEndOf="@+id/b_back_workout"
+        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        tools:ignore="SpeakableTextPresentCheck,DuplicateClickableBoundsCheck" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="174dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="38dp"
+        android:fontFamily="@font/bebas_neue"
+        android:text="Время:"
+        android:textAlignment="textStart"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/b_back_workout" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="174dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="38dp"
+        android:fontFamily="@font/bebas_neue"
+        android:text="Вид:"
+        android:textAlignment="textStart"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ET_title" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="230dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/bebas_neue"
+        android:text="Создание"
+        android:textAlignment="center"
+        android:textColor="@color/maincolor"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/b_back"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/b_back_day"
+        android:layout_width="90dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/back_day"
+        android:foreground="@drawable/back_day"
+        android:onClick="day"
+        app:layout_constraintStart_toEndOf="@+id/b_back_morning"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/b_day"
+        android:layout_width="90dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/day"
+        android:foreground="@drawable/day"
+        android:onClick="day"
+        app:layout_constraintStart_toEndOf="@+id/b_back_morning"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/b_back_workout"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/back_work"
+        android:focusableInTouchMode="true"
+        android:fontFamily="@font/bebas_neue"
+        android:foreground="@drawable/back_work"
+        android:letterSpacing="0"
+        android:onClick="bworkout"
+        android:text="Тренировка"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        tools:ignore="DuplicateClickableBoundsCheck" />
+
+    <Button
+        android:id="@+id/b_workout"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/workout"
+        android:foreground="@drawable/workout"
+        android:onClick="bworkout"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/b_back_morning"
+        android:layout_width="90dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="58dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/back_morning"
+        android:foreground="@drawable/back_morning"
+        android:onClick="morning"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/b_morning"
+        android:layout_width="90dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="58dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/morning"
+        android:foreground="@drawable/morning"
+        android:onClick="morning"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="174dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/bebas_neue"
+        android:text="Время:"
+        android:textAlignment="textStart"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/b_back_morning" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

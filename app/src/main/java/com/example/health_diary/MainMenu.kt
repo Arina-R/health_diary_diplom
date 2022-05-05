@@ -4,18 +4,23 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.navigation.NavigationView
 
 
 class MainMenu : AppCompatActivity(),NavigationView.OnNavigationItemSelectedListener {
 
     val DbManager = com.example.health_diary.db.DbManager(this )
+    val tAdapter = com.example.health_diary.db.AdapterTask(ArrayList(),this)
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,10 +28,7 @@ class MainMenu : AppCompatActivity(),NavigationView.OnNavigationItemSelectedList
         setContentView(R.layout.activity_main_menu)
         val nav_view = findViewById<NavigationView>(R.id.nav_view)
         nav_view.setNavigationItemSelectedListener (this)
-
-
-
-
+        init()
 
         //одноразовое использование в проге(при первом запуске)
         val settings = ""
@@ -46,16 +48,50 @@ class MainMenu : AppCompatActivity(),NavigationView.OnNavigationItemSelectedList
         }
     }
 
+
+    fun init(){
+
+        val rc_main = findViewById<RecyclerView>(R.id.rc_main)
+
+        rc_main.layoutManager = LinearLayoutManager(this)
+
+        val swapHelper = getSwapMg()
+        swapHelper.attachToRecyclerView(rc_main)
+        rc_main.adapter = tAdapter
+        Log.d("Mylog", "initjuhjh ")
+   }
+
+
+    fun fillAdapter(){
+
+        tAdapter.updateAdapter(DbManager.readTasksData())
+        Log.d("Mylog", "fill adapter")
+    }
+
+    private fun getSwapMg(): ItemTouchHelper {
+        return ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0,
+            ItemTouchHelper.RIGHT or ItemTouchHelper.LEFT){
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                return  false
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+
+
+            }
+        })
+    }
+
+
     fun createTask(view: View){
         val intent = Intent(this, PageCreate::class.java)
         startActivity(intent)
     }
 
-    override fun onResume() {
-        super.onResume()
-        DbManager.openDb()
-
-    }
 
     fun menuopenCloseNavigationDrawer(view: View) {
         val drawerL = findViewById<DrawerLayout>(R.id.drawerL)
@@ -90,5 +126,17 @@ class MainMenu : AppCompatActivity(),NavigationView.OnNavigationItemSelectedList
         }
 
         return true
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        DbManager.closeDb()
+    }
+
+
+    override fun onResume() {
+        super.onResume()
+        DbManager.openDb()
+       fillAdapter()
     }
 }

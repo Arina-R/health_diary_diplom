@@ -2,7 +2,9 @@ package com.example.health_diary.db
 
 import android.content.ContentValues
 import android.content.Context
+import android.database.SQLException
 import android.database.sqlite.SQLiteDatabase
+import android.util.Log
 
 class DbManager(context: Context) {
     val DbHelper = DbHelper(context)
@@ -11,6 +13,27 @@ class DbManager(context: Context) {
     fun openDb(){
         db = DbHelper.writableDatabase
     }
+
+    //получение последнего id из таблицы
+    fun readSequence(): ArrayList<String> {
+
+        val dataList = ArrayList<String>()
+        var dataText : String
+        val selected = DbnameClass.column_name + " = \"tasks\""
+        Log.d("Mylog", " $selected")
+        val cursor = db?.query(DbnameClass.sqlite_sequence,null,selected,null,null,null,null)
+        Log.d("Mylog", " $cursor")
+        while (cursor?.moveToNext()!!){
+             dataText = cursor?.getString(cursor.getColumnIndexOrThrow(DbnameClass.column_seq))
+            dataList.add((dataText.toString()))
+            Log.d("Mylog", "  data text  $dataText")
+        }
+        cursor.close()
+        Log.d("Mylog", "  data text  $dataList")
+        return dataList
+    }
+
+
 
 
 //работа с таблицей пользователей
@@ -52,21 +75,42 @@ class DbManager(context: Context) {
 
     }
 
-    fun readTaskData() : ArrayList<ListItemForHabits>{
+    fun removeTask(id: Int){
+        Log.d("Mylog","удаление task по id  $id")
+        val selection = DbnameClass.COLUMN_idTask + " =$id"
+        db?.delete(DbnameClass.TABLE_TASK,selection,null)
+    }
+
+    fun updatetask(title: String, time: String, type : Int, user: Int, id :Int){
+        val selection = DbnameClass.COLUMN_idTask + " =$id"
+        val values = ContentValues().apply {
+            put(DbnameClass.COLUMN_TASKTITLE, title)
+            put(DbnameClass.COLUMN_TIME, time)
+            put(DbnameClass.COLUMN_IDTYPE, type)
+            put(DbnameClass.COLUMN_IDUSER, user)
+        }
+        db?.update(DbnameClass.TABLE_TASK,values,selection,null)
+
+    }
+
+    fun readTasksData() : ArrayList<ListItemForHabits>{
         val dataList = ArrayList<ListItemForHabits>()
+
 
         val cursor = db?.query(DbnameClass.TABLE_TASK,null,null,null,null,null,null)
 
         while (cursor?.moveToNext()!!){
-            val dataIdUser = cursor?.getString(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_IDUSER))
+            val dataIdUser = cursor?.getInt(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_IDUSER))
             val dataTitile = cursor?.getString(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_TASKTITLE))
-            val dataIdType = cursor?.getString(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_IDTYPE))
+            val dataIdType = cursor?.getInt(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_IDTYPE))
             val dataTime = cursor?.getString(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_TIME))
+            val dataTid = cursor?.getInt(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_idTask))
             val item = ListItemForHabits()
-            item.userid = dataIdUser.toInt()
-            item.title = dataTitile
-            item.typeid = dataIdType.toInt()
-            item.time = dataTime
+            item.useridTask = dataIdUser
+            item.task_title = dataTitile
+            item.typeidTask = dataIdType
+            item.timeTask = dataTime
+            item.task_ID = dataTid
             dataList.add(item)
 
         }
@@ -75,6 +119,57 @@ class DbManager(context: Context) {
         return dataList
     }
 
+    fun readHabitData() : ArrayList<ListItemForHabits>{
+        val dataList = ArrayList<ListItemForHabits>()
+
+        val selectHabit = DbnameClass.COLUMN_IDTYPE + " = 2"
+        val cursor = db?.query(DbnameClass.TABLE_TASK,null,selectHabit,null,null,null,null)
+
+        while (cursor?.moveToNext()!!){
+            val dataIdUser = cursor?.getInt(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_IDUSER))
+            val dataTitile = cursor?.getString(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_TASKTITLE))
+            val dataIdType = cursor?.getInt(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_IDTYPE))
+            val dataTime = cursor?.getString(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_TIME))
+            val dataTid = cursor?.getInt(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_idTask))
+            val item = ListItemForHabits()
+            item.useridTask = dataIdUser
+            item.task_title = dataTitile
+            item.typeidTask = dataIdType
+            item.timeTask = dataTime
+            item.task_ID = dataTid
+            dataList.add(item)
+
+        }
+        cursor.close()
+
+        return dataList
+    }
+
+    fun readWorkoutData() : ArrayList<ListItemForHabits>{
+        val dataList = ArrayList<ListItemForHabits>()
+
+        val selectHabit = DbnameClass.COLUMN_IDTYPE + " = 1"
+        val cursor = db?.query(DbnameClass.TABLE_TASK,null,selectHabit,null,null,null,null)
+
+        while (cursor?.moveToNext()!!){
+            val dataIdUser = cursor?.getInt(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_IDUSER))
+            val dataTitile = cursor?.getString(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_TASKTITLE))
+            val dataIdType = cursor?.getInt(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_IDTYPE))
+            val dataTime = cursor?.getString(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_TIME))
+            val dataTid = cursor?.getInt(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_idTask))
+            val item = ListItemForHabits()
+            item.useridTask = dataIdUser
+            item.task_title = dataTitile
+            item.typeidTask = dataIdType
+            item.timeTask = dataTime
+            item.task_ID = dataTid
+            dataList.add(item)
+
+        }
+        cursor.close()
+
+        return dataList
+    }
 
 
     // работа с типами заданий
@@ -198,14 +293,18 @@ class DbManager(context: Context) {
 
     }
 
-    fun readFoodData() : ArrayList<String>{
-        val dataList = ArrayList<String>()
+    fun readFoodData() : ArrayList<ListFood>{
+        val dataList = ArrayList<ListFood>()
 
         val cursor = db?.query(DbnameClass.TABLE_FOOD,null,null,null,null,null,null)
 
         while (cursor?.moveToNext()!!){
-            val dataText = cursor?.getString(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_TITLE_MENU))
-            dataList.add((dataText.toString()))
+            val dataTitle = cursor?.getString(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_TITLE_MENU))
+            val dataidfood = cursor?.getInt(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_idFood))
+            val item = ListFood()
+            item.food_ID = dataidfood
+            item.food_title = dataTitle
+            dataList.add(item)
 
         }
         cursor.close()
@@ -237,6 +336,12 @@ class DbManager(context: Context) {
         cursor.close()
 
         return dataList
+    }
+
+    fun removeExecution(id: Int){
+        Log.d("Mylog","удаление  ex по id  $id")
+        val selection = DbnameClass.COLUMN_IDTASKex + " =$id"
+        db?.delete(DbnameClass.TABLE_EXECUTIONDAY,selection,null)
     }
 
     fun closeDb(){

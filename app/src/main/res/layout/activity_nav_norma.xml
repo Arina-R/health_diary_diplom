@@ -26,7 +26,7 @@
             app:layout_constraintTop_toBottomOf="@+id/bhum3">
 
             <Button
-                android:id="@+id/b_thu2"
+                android:id="@+id/b_male"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="10dp"
@@ -40,7 +40,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/TV3" />
 
             <Button
-                android:id="@+id/b_thu3"
+                android:id="@+id/b_female"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="210dp"

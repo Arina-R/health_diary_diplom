@@ -4,6 +4,11 @@ import android.provider.BaseColumns
 
 object DbnameClass : BaseColumns {
 
+
+    const val sqlite_sequence ="sqlite_sequence"
+    const val column_seq = "seq"
+    const val  column_name = "name"
+
 //USER
     const val TABLE_USERS = "users"
     const val COLUMN_idUser = "userID"

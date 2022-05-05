@@ -15,8 +15,10 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/backgreen"
         android:foreground="@drawable/backgreen"
+        android:onClick="back"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/textView"
@@ -24,14 +26,12 @@
         android:layout_height="29dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="95dp"
-        android:layout_marginBottom="16dp"
         android:fontFamily="@font/bebas_neue"
         android:text="Позиция:"
         android:textAlignment="viewStart"
         android:textColor="@color/white"
         android:textSize="25sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/ET_position"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -85,25 +85,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/ET_position"
-        android:layout_width="278dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="140dp"
-        android:background="@drawable/greybox"
-        android:drawablePadding="10dp"
-        android:ems="10"
-        android:gravity="center"
-        android:inputType="textPersonName"
-        android:textColor="@color/maincolor"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/ET_position2"
+        android:id="@+id/ET_quantity"
         android:layout_width="300dp"
         android:layout_height="40dp"
         android:layout_marginStart="40dp"
@@ -120,16 +102,37 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <EditText
+        android:id="@+id/ET_quantity2"
+        android:layout_width="270dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="140dp"
+        android:background="@drawable/greybox"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        android:onClick="pagePosition"
+        android:textColor="@color/maincolor"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/B_add_position"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Button
         android:id="@+id/B_add_position"
         android:layout_width="50dp"
         android:layout_height="40dp"
         android:layout_marginTop="140dp"
+        android:layout_marginEnd="43dp"
         android:background="@drawable/add"
         android:foreground="@drawable/add"
-        android:onClick="addPosition"
-        app:layout_constraintStart_toEndOf="@+id/ET_position"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:onClick="pagePosition"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <Button
         android:id="@+id/b_breakfast"
@@ -140,7 +143,8 @@
         android:background="@drawable/breakfast"
         android:foreground="@drawable/breakfast"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <Button
         android:id="@+id/b_lunch"
@@ -162,7 +166,8 @@
         android:background="@drawable/dinner"
         android:foreground="@drawable/dinner"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/b_breakfast" />
+        app:layout_constraintTop_toBottomOf="@+id/b_breakfast"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <Button
         android:id="@+id/b_snack"
@@ -187,4 +192,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

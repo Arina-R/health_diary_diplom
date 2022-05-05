@@ -6,7 +6,7 @@
     android:layout_height="60dp">
 
     <TextView
-        android:id="@+id/TV_rc_habit"
+        android:id="@+id/TV_rc_task"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="50dp"
@@ -22,4 +22,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Switch
+        android:id="@+id/switch_compat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:checked="false"
+        android:theme="@style/MySwitch"
+        app:layout_constraintBottom_toBottomOf="@+id/TV_rc_task"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/TV_rc_task"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.515" />
+    />
 </androidx.constraintlayout.widget.ConstraintLayout>

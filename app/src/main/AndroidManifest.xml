@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Health_diary">
         <activity
+            android:name=".PageFood"
+            android:exported="false" />
+        <activity
             android:name=".Nav_habit"
             android:exported="false" />
         <activity
@@ -36,7 +39,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".AddPosition"
             android:exported="false" />
@@ -49,7 +51,6 @@
         <activity
             android:name=".MainActivity"
             android:exported="false" />
-
 
         <meta-data
             android:name="preloaded_fonts"

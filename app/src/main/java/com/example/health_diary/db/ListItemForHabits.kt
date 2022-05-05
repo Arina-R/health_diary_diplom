@@ -1,8 +1,9 @@
 package com.example.health_diary.db
 
  class ListItemForHabits {
-    var userid = 0
-    lateinit var title : String
-      var typeid = 0
-    lateinit var time : String
+    var useridTask = 0
+    lateinit var task_title : String
+      var typeidTask = 0
+    lateinit var timeTask : String
+    var task_ID =0
 }

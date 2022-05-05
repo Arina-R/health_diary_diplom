@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.health_diary.db.DbManager
@@ -20,15 +21,13 @@ class Nav_habit : AppCompatActivity(),NavigationView.OnNavigationItemSelectedLis
     val hAdapter = com.example.health_diary.db.AdapterHabit(ArrayList(),this)
 
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_nav_habit)
         val nav_view1 = findViewById<NavigationView>(R.id.nav_view1)
         nav_view1.setNavigationItemSelectedListener (this)
         init()
-        Log.d("Mylog","onCreate")
+
     }
 
     override fun onDestroy() {
@@ -45,15 +44,35 @@ class Nav_habit : AppCompatActivity(),NavigationView.OnNavigationItemSelectedLis
 
     fun init(){
         val rc_habit = findViewById<RecyclerView>(R.id.rc_habit)
-        Log.d("Mylog","init")
+
         rc_habit.layoutManager = LinearLayoutManager(this)
+
+        val swapHelper = getSwapMg()
+        swapHelper.attachToRecyclerView(rc_habit)
         rc_habit.adapter = hAdapter
     }
 
 
     fun fillAdapter(){
-        Log.d("Mylog","fill")
-        hAdapter.updateAdapter(DbManager.readTaskData())
+
+        hAdapter.updateAdapter(DbManager.readHabitData())
+    }
+
+    private fun getSwapMg(): ItemTouchHelper{
+        return ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.RIGHT or ItemTouchHelper.LEFT){
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                return  false
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                hAdapter.removeItem(viewHolder.adapterPosition, DbManager )
+
+            }
+        })
     }
 
     fun createTask(view: View){

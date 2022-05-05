@@ -2,35 +2,32 @@ package com.example.health_diary.db
 
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.health_diary.CreateMenu
 import com.example.health_diary.Create_H_W
 import com.example.health_diary.R
 
-class AdapterHabit(listHabit:ArrayList<ListItemForHabits>,contextH:Context ): RecyclerView.Adapter<AdapterHabit.Holder>() {
-
-    var listArray =listHabit
-    var context = contextH
+class AdapterFood (listFood:ArrayList<ListFood>,contextF:Context ): RecyclerView.Adapter<AdapterFood.Holder>() {
+    var listArray =listFood
+    var context = contextF
 
     class Holder(itemView: View,contextVH: Context) : RecyclerView.ViewHolder(itemView) {
 
         val tvTitle = itemView.findViewById<TextView>(R.id.TV_rc_habit)
         val context = contextVH
 
-        fun setData(item: ListItemForHabits){
-            tvTitle.text = item.task_title
+        fun setData(item: ListFood){
+            tvTitle.text = item.food_title
             itemView.setOnClickListener{
-                val intent = Intent(context,Create_H_W::class.java).apply {
+                val intent = Intent(context,CreateMenu::class.java).apply {
 
-                    putExtra(IntentConstTask.I_title,item.task_title)
-                    putExtra(IntentConstTask.I_time,item.timeTask)
-                    putExtra(IntentConstTask.I_typeid,item.typeidTask)
-                    putExtra(IntentConstTask.I_userid,item.useridTask)
-                    putExtra(IntentConstTask.I_id_task, item.task_ID)
+                    putExtra(IntentConstFood.I_title_food, item.food_title)
+                    putExtra(IntentConstFood.I_id_food, item.food_ID)
+
                 }
                 context.startActivity(intent)
             }
@@ -49,11 +46,11 @@ class AdapterHabit(listHabit:ArrayList<ListItemForHabits>,contextH:Context ): Re
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-       holder.setData(listArray.get(position))
+        holder.setData(listArray.get(position))
 
     }
 
-    fun updateAdapter(listItems :List<ListItemForHabits>){
+    fun updateAdapter(listItems :List<ListFood>){
         listArray.clear()
         listArray.addAll(listItems)
         notifyDataSetChanged()
@@ -61,13 +58,11 @@ class AdapterHabit(listHabit:ArrayList<ListItemForHabits>,contextH:Context ): Re
     }
 
     fun removeItem(pos: Int, dbManager: DbManager ){
-        dbManager.removeTask(listArray[pos].task_ID)
-        dbManager.removeExecution(listArray[pos].task_ID)
+        dbManager.removeTask(listArray[pos].food_ID)
 
         listArray.removeAt((pos))
         notifyItemRangeChanged(0,listArray.size)
         notifyItemRemoved(pos)
 
     }
-
 }
