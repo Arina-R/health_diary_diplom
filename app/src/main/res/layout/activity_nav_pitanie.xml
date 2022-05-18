@@ -15,6 +15,99 @@
         android:layout_height="match_parent">
 
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rc_dinnerfmenu"
+            android:layout_width="325dp"
+            android:layout_height="100dp"
+            android:background="@drawable/greybox"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TV_rc_dinner">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <TextView
+            android:id="@+id/TV_rc_dinner"
+            android:layout_width="325dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/taskform"
+            android:fontFamily="@font/bebas_neue"
+            android:gravity="center"
+            android:text="Ужин"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rc_lunchmenu" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rc_snackmenu"
+            android:layout_width="325dp"
+            android:layout_height="100dp"
+            android:background="@drawable/greybox"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TV_rc_snackmenu" />
+
+        <TextView
+            android:id="@+id/TV_rc_snackmenu"
+            android:layout_width="325dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/taskform"
+            android:fontFamily="@font/bebas_neue"
+            android:gravity="center"
+            android:text="Перекус"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rc_dinnerfmenu" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rc_lunchmenu"
+            android:layout_width="325dp"
+            android:layout_height="100dp"
+            android:background="@drawable/greybox"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TV_rc_lunch" />
+
+        <TextView
+            android:id="@+id/TV_rc_lunch"
+            android:layout_width="325dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/taskform"
+            android:fontFamily="@font/bebas_neue"
+            android:gravity="center"
+            android:text=" Обед"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rc_breakfastmenu" />
+
+        <TextView
+            android:id="@+id/TV_rc_breakf"
+            android:layout_width="325dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="70dp"
+            android:background="@drawable/taskform"
+            android:fontFamily="@font/bebas_neue"
+            android:gravity="center"
+            android:text="Завтрак"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/textView13"
             android:layout_width="230dp"
@@ -31,13 +124,16 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rc_habit"
-            android:layout_width="327dp"
-            android:layout_height="651dp"
-            android:layout_marginTop="80dp"
+            android:id="@+id/rc_breakfastmenu"
+            android:layout_width="325dp"
+            android:layout_height="100dp"
+            android:background="@drawable/greybox"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/TV_rc_breakf">
+
+        </androidx.recyclerview.widget.RecyclerView>
 
         <Button
             android:id="@+id/bhum4"
@@ -74,6 +170,7 @@
         android:layout_gravity="start"
         android:background="@drawable/rounded"
         android:fitsSystemWindows="true"
+        android:visibility="gone"
         app:headerLayout="@layout/header_menu"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

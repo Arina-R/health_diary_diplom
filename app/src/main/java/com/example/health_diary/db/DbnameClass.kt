@@ -34,17 +34,13 @@ object DbnameClass : BaseColumns {
     const val COLUMN_DATE = "date"
     const val COLUMN_DONE = "done"
 
-//MENUFOOD
-    const val TABLE_MENUFOOD = "menufood"
-    const val COLUMN_IDMENU = "idMenu"
-    const val COLUMN_IDFOOD = "idFood"
-    const val COLUMN_QUANTITY = "quantity"
-    const val COLUMN_TIMEFOOD   = "time"
-
 //MENU
     const val TABLE_MENU = "menu"
     const val COLUMN_idMenu = "idMenu"
     const val COLUMN_DATEmenu = "date"
+    const val COLUMN_IDFOOD = "idFood"
+    const val COLUMN_QUANTITY = "quantity"
+    const val COLUMN_TIMEFOOD   = "time"
     const val COLUMN_idUSERmenu ="idUser"
 
 //FOOD
@@ -103,22 +99,14 @@ const val CREATE_TABLE_STATISTIC = "CREATE TABLE IF NOT EXISTS $TABLE_STATISTIC 
     const val SQL_DELETE_STATISTIC = "DROP TABLE IF EXISTS $TABLE_STATISTIC"
 
 
-//MENUFOOD
-    const val CREATE_TABLE_MENUFOOD = "CREATE TABLE IF NOT EXISTS $TABLE_MENUFOOD (" +
-            " $COLUMN_IDMENU INTEGER NOT NULL," +
-            " $COLUMN_IDFOOD INTEGER NOT NULL," +
-            " $COLUMN_QUANTITY INTEGER NOT NULL," +
-            " $COLUMN_TIMEFOOD TEXT NOT NULL," +
-            "  FOREIGN KEY($COLUMN_IDFOOD) REFERENCES $TABLE_FOOD($COLUMN_idFood)," +
-            "  FOREIGN KEY($COLUMN_IDMENU ) REFERENCES $TABLE_MENU ($COLUMN_idMenu))"
-
-    const val SQL_DELETE_MENUFOOD = "DROP TABLE IF EXISTS $TABLE_MENUFOOD"
-
 
 //MENU
     const val CREATE_TABLE_MENU = "CREATE TABLE IF NOT EXISTS $TABLE_MENU (" +
             " $COLUMN_idMenu INTEGER NOT NULL," +
             " $COLUMN_DATEmenu TEXT NOT NULL," +
+        " $COLUMN_IDFOOD INTEGER NOT NULL," +
+        " $COLUMN_QUANTITY INTEGER NOT NULL," +
+        " $COLUMN_TIMEFOOD TEXT NOT NULL," +
             "$COLUMN_idUSERmenu INTEGER NOT NULL," +
             "FOREIGN KEY($COLUMN_idUSERmenu) REFERENCES $TABLE_USERS($COLUMN_idUser)" +
             " PRIMARY KEY($COLUMN_idMenu AUTOINCREMENT))"

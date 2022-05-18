@@ -135,6 +135,18 @@
         tools:ignore="TouchTargetSizeCheck" />
 
     <Button
+        android:id="@+id/b_breakfast2"
+        android:layout_width="130dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/back_break"
+        android:foreground="@drawable/back_break"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <Button
         android:id="@+id/b_breakfast"
         android:layout_width="130dp"
         android:layout_height="40dp"
@@ -142,9 +154,21 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/breakfast"
         android:foreground="@drawable/breakfast"
+        android:onClick="breakfast"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
         tools:ignore="TouchTargetSizeCheck" />
+
+    <Button
+        android:id="@+id/b_lunch2"
+        android:layout_width="130dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="50dp"
+        android:background="@drawable/back_lunch"
+        android:foreground="@drawable/back_lunch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <Button
         android:id="@+id/b_lunch"
@@ -154,8 +178,21 @@
         android:layout_marginEnd="50dp"
         android:background="@drawable/lunch"
         android:foreground="@drawable/lunch"
+        android:onClick="lunch"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <Button
+        android:id="@+id/b_dinner2"
+        android:layout_width="130dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/back_dinner"
+        android:foreground="@drawable/back_dinner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/b_breakfast"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <Button
         android:id="@+id/b_dinner"
@@ -165,9 +202,21 @@
         android:layout_marginTop="30dp"
         android:background="@drawable/dinner"
         android:foreground="@drawable/dinner"
+        android:onClick="dinner"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/b_breakfast"
+        app:layout_constraintTop_toBottomOf="@+id/b_breakfast2"
         tools:ignore="TouchTargetSizeCheck" />
+
+    <Button
+        android:id="@+id/b_snack2"
+        android:layout_width="130dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="50dp"
+        android:background="@drawable/back_snack"
+        android:foreground="@drawable/back_snack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/b_lunch" />
 
     <Button
         android:id="@+id/b_snack"
@@ -177,6 +226,7 @@
         android:layout_marginEnd="50dp"
         android:background="@drawable/snack"
         android:foreground="@drawable/snack"
+        android:onClick="sneck"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/b_lunch" />
 

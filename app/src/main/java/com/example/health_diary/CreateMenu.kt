@@ -5,17 +5,18 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.EditText
 import com.example.health_diary.db.IntentConstFood
-import com.example.health_diary.db.IntentConstTask
 import java.text.SimpleDateFormat
 import java.util.*
 
 class CreateMenu : AppCompatActivity() {
 
-    val DbManager = com.example.health_diary.db.DbManager(this )
+    val DbManager = com.example.health_diary.db.DbManager(this)
     var isEdit = false
     var id = 0
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,9 +26,9 @@ class CreateMenu : AppCompatActivity() {
     }
     fun savePitanie(view: View){
         var etQuantity = findViewById<EditText>(R.id.ET_quantity)
+        var quant = Integer.parseInt(etQuantity.getText().toString())
 
-         DbManager.insertToMenu(1,getTime())
-      //  DbManager.insertToMenuFood(1,1,100,timeM)
+         DbManager.insertToMenu(1,id,quant,eat,getTime())
 
         val intent = Intent(this, Nav_Pitanie::class.java)
         startActivity(intent)
@@ -39,6 +40,64 @@ class CreateMenu : AppCompatActivity() {
     fun addPosition(view: View){
         val intent = Intent(this, AddPosition::class.java)
         startActivity(intent)
+    }
+
+    lateinit var eat : String
+
+    fun breakfast(view: View){
+        eat = "Завтрак"
+        changeTime()
+
+    }
+    fun lunch(view: View){
+        eat = "Обед"
+        changeTime()
+    }
+    fun dinner(view: View){
+        eat = "Ужин"
+        changeTime()
+    }
+    fun sneck(view: View){
+        eat = "Перекус"
+        changeTime()
+    }
+
+    fun changeTime(){
+        val br = findViewById<Button>(R.id.b_breakfast)
+        val lun = findViewById<Button>(R.id.b_lunch)
+        val din = findViewById<Button>(R.id.b_dinner)
+        val sn = findViewById<Button>(R.id.b_snack)
+
+        if(eat == "Завтрак"){
+            br.visibility = View.GONE
+            lun.visibility = View.VISIBLE
+            din.visibility = View.VISIBLE
+            sn.visibility = View.VISIBLE
+        }
+        else{
+            if(eat == "Обед"){
+                br.visibility = View.VISIBLE
+                lun.visibility = View.GONE
+                din.visibility = View.VISIBLE
+                sn.visibility = View.VISIBLE
+            }
+            else{
+                if(eat == "Ужин"){
+                    br.visibility = View.VISIBLE
+                    lun.visibility = View.VISIBLE
+                    din.visibility = View.GONE
+                    sn.visibility = View.VISIBLE
+                }
+                else {
+                    if (eat == "Перекус") {
+                        br.visibility = View.VISIBLE
+                        lun.visibility = View.VISIBLE
+                        din.visibility = View.VISIBLE
+                        sn.visibility = View.GONE
+                    }
+                }
+            }
+        }
     }
 
     private fun getTime(): String {
@@ -75,18 +134,5 @@ class CreateMenu : AppCompatActivity() {
         }
     }
 
-    lateinit var timeM :String
-    fun breakfast(view: View){
-        timeM = "Завтрак"
-    }
-    fun lunch(view: View){
-        timeM = "Обед"
-    }
-    fun dinner(view: View){
-        timeM = "Ужин"
-    }
-    fun snack(view: View){
-        timeM = "Перекус"
-    }
 
 }

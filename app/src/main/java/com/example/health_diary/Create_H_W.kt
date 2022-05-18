@@ -7,13 +7,12 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
 import com.example.health_diary.db.IntentConstTask
 
 class Create_H_W : AppCompatActivity() {
 
 
-    val DbManager = com.example.health_diary.db.DbManager(this )
+    val DbManager = com.example.health_diary.db.DbManager(this)
     var id = 0
     var isEdit = false
 
@@ -34,6 +33,7 @@ class Create_H_W : AppCompatActivity() {
                 var et = findViewById<EditText>(R.id.ET_title)
                et.setText(i.getStringExtra(IntentConstTask.I_title))
                 id =i.getIntExtra(IntentConstTask.I_id_task,0)
+                Log.d("Mylog","------------------------------------проверка id привычки $id")
             }
         }
     }
@@ -48,7 +48,6 @@ class Create_H_W : AppCompatActivity() {
     }
 
     lateinit var time : String
-    var week = 0
     var type  = 0
 
     fun morning(view: View){
@@ -255,8 +254,6 @@ class Create_H_W : AppCompatActivity() {
     fun savetask(view: View){
 
 
-
-
         var et = findViewById<EditText>(R.id.ET_title)
 
         if(isEdit){
@@ -266,18 +263,14 @@ class Create_H_W : AppCompatActivity() {
         }
         var idS = DbManager.readSequence()
 
-        Log.d("Mylog", " id iz sequence:  $idS")
         //insert to execution
 
 
         var iii=  idS.toString()
-        Log.d("Mylog", " iiii:  $iii")
         var itog = iii.substringAfter('[')
-        Log.d("Mylog", " itog1:  $itog")
         itog = itog.substringBeforeLast(']')
-        Log.d("Mylog", " itog2:  $itog")
         var itogId = Integer.parseInt(itog)
-        Log.d("Mylog", " id konec:  $itog")
+
 
         if (m==2){
            DbManager.insertToExecution(itogId,"Mon")
@@ -300,8 +293,6 @@ class Create_H_W : AppCompatActivity() {
         if (su==2){
             DbManager.insertToExecution(itogId,"Sun")
         }
-
-
 
 
         finish()

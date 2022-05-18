@@ -3,7 +3,6 @@ package com.example.health_diary
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -11,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class PageFood : AppCompatActivity() {
 
-    val DbManager = com.example.health_diary.db.DbManager(this )
+    val DbManager = com.example.health_diary.db.DbManager(this)
     val fAdapter = com.example.health_diary.db.AdapterFood(ArrayList(),this)
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -31,8 +31,6 @@ class Nav_Norma : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
     }
 
     var pol = 0
-    var m = 5
-    var f =161
     var Rost = 1
     var Ves = 1
     var Age =1

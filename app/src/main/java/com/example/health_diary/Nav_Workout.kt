@@ -15,7 +15,7 @@ import com.google.android.material.navigation.NavigationView
 
 class Nav_Workout : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
-    val DbManager = com.example.health_diary.db.DbManager(this )
+    val DbManager = com.example.health_diary.db.DbManager(this)
     val wAdapter = com.example.health_diary.db.AdapterHabit(ArrayList(),this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,8 +25,6 @@ class Nav_Workout : AppCompatActivity(), NavigationView.OnNavigationItemSelected
         nav_view5.setNavigationItemSelectedListener (this)
         init()
     }
-
-
 
     override fun onDestroy() {
         super.onDestroy()

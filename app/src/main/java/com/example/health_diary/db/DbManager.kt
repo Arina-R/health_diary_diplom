@@ -2,6 +2,7 @@ package com.example.health_diary.db
 
 import android.content.ContentValues
 import android.content.Context
+import android.database.Cursor
 import android.database.SQLException
 import android.database.sqlite.SQLiteDatabase
 import android.util.Log
@@ -227,27 +228,30 @@ class DbManager(context: Context) {
     }
 
 
-    // работа о связью меню и еды
-    fun insertToMenuFood(idMenu: Int, idFood: Int, quantity : Int, time: String){
+
+    // работа c меню
+    fun insertToMenu( idUser : Int,idFood : Int, quantity:Int,time: String,  date: String){
         val values = ContentValues().apply {
-            put(DbnameClass.COLUMN_IDMENU, idMenu)
+            put(DbnameClass.COLUMN_DATEmenu, date)
             put(DbnameClass.COLUMN_IDFOOD, idFood)
             put(DbnameClass.COLUMN_QUANTITY, quantity)
             put(DbnameClass.COLUMN_TIMEFOOD, time)
-
+            put(DbnameClass.COLUMN_idUSERmenu, idUser)
         }
 
-        db?.insert(DbnameClass.TABLE_MENUFOOD,null,values)
+        db?.insert(DbnameClass.TABLE_MENU,null,values)
 
     }
 
-    fun readMenuFoodData() : ArrayList<String>{
+    fun searchFood(name: String): ArrayList<String> {
         val dataList = ArrayList<String>()
+        var dataText : String
+        val selected = DbnameClass.COLUMN_TITLE_MENU + " = \"$name\""
 
-        val cursor = db?.query(DbnameClass.TABLE_MENUFOOD,null,null,null,null,null,null)
+        val cursor = db?.query(DbnameClass.TABLE_FOOD,null,selected,null,null,null,null)
 
         while (cursor?.moveToNext()!!){
-            val dataText = cursor?.getString(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_QUANTITY))
+            dataText = cursor?.getString(cursor.getColumnIndexOrThrow(DbnameClass.column_seq))
             dataList.add((dataText.toString()))
 
         }
@@ -256,25 +260,108 @@ class DbManager(context: Context) {
         return dataList
     }
 
-    // работа c меню
-    fun insertToMenu( idUser : Int, date: String){
-        val values = ContentValues().apply {
-            put(DbnameClass.COLUMN_DATEmenu, date)
-            put(DbnameClass.COLUMN_idUSERmenu, idUser)
-        }
 
-        db?.insert(DbnameClass.TABLE_MENU,null,values)
+    fun readMenuBreakfastData() : ArrayList<ListMenu>{
+        val dataList = ArrayList<ListMenu>()
 
-    }
-
-    fun readMenuData() : ArrayList<String>{
-        val dataList = ArrayList<String>()
-
-        val cursor = db?.query(DbnameClass.TABLE_MENU,null,null,null,null,null,null)
+        val selected = DbnameClass.COLUMN_TIMEFOOD + " = \"Завтрак\""
+        val cursor = db?.query(DbnameClass.TABLE_MENU,null,selected,null,null,null,null)
 
         while (cursor?.moveToNext()!!){
-            val dataText = cursor?.getString(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_DATEmenu))
-            dataList.add((dataText.toString()))
+            val dataMenuDate = cursor?.getString(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_DATEmenu))
+            val dataMenuID = cursor?.getInt(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_idMenu))
+            val datafoodID = cursor?.getInt(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_IDFOOD))
+            val dataQuantity = cursor?.getInt(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_QUANTITY))
+            val datatime = cursor?.getString(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_TIMEFOOD))
+            val item = ListMenu()
+            item.menu_ID = dataMenuID
+            item.menu_quant = dataQuantity
+            item.food_ID = datafoodID
+            item.menu_date = dataMenuDate
+            item.menu_time = datatime
+
+            dataList.add(item)
+
+        }
+        cursor.close()
+
+        return dataList
+    }
+
+    fun readMenulunchData() : ArrayList<ListMenu>{
+        val dataList = ArrayList<ListMenu>()
+
+        val selected = DbnameClass.COLUMN_TIMEFOOD + " = \"Обед\""
+        val cursor = db?.query(DbnameClass.TABLE_MENU,null,selected,null,null,null,null)
+
+        while (cursor?.moveToNext()!!){
+            val dataMenuDate = cursor?.getString(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_DATEmenu))
+            val dataMenuID = cursor?.getInt(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_idMenu))
+            val datafoodID = cursor?.getInt(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_IDFOOD))
+            val dataQuantity = cursor?.getInt(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_QUANTITY))
+            val datatime = cursor?.getString(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_TIMEFOOD))
+            val item = ListMenu()
+            item.menu_ID = dataMenuID
+            item.menu_quant = dataQuantity
+            item.food_ID = datafoodID
+            item.menu_date = dataMenuDate
+            item.menu_time = datatime
+
+            dataList.add(item)
+
+        }
+        cursor.close()
+
+        return dataList
+    }
+
+    fun readMenuDinnerData() : ArrayList<ListMenu>{
+        val dataList = ArrayList<ListMenu>()
+
+        val selected = DbnameClass.COLUMN_TIMEFOOD + " = \"Ужин\""
+        val cursor = db?.query(DbnameClass.TABLE_MENU,null,selected,null,null,null,null)
+
+        while (cursor?.moveToNext()!!){
+            val dataMenuDate = cursor?.getString(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_DATEmenu))
+            val dataMenuID = cursor?.getInt(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_idMenu))
+            val datafoodID = cursor?.getInt(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_IDFOOD))
+            val dataQuantity = cursor?.getInt(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_QUANTITY))
+            val datatime = cursor?.getString(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_TIMEFOOD))
+            val item = ListMenu()
+            item.menu_ID = dataMenuID
+            item.menu_quant = dataQuantity
+            item.food_ID = datafoodID
+            item.menu_date = dataMenuDate
+            item.menu_time = datatime
+
+            dataList.add(item)
+
+        }
+        cursor.close()
+
+        return dataList
+    }
+
+    fun readMenuSnackData() : ArrayList<ListMenu>{
+        val dataList = ArrayList<ListMenu>()
+
+        val selected = DbnameClass.COLUMN_TIMEFOOD + " = \"Перекус\""
+        val cursor = db?.query(DbnameClass.TABLE_MENU,null,selected,null,null,null,null)
+
+        while (cursor?.moveToNext()!!){
+            val dataMenuDate = cursor?.getString(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_DATEmenu))
+            val dataMenuID = cursor?.getInt(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_idMenu))
+            val datafoodID = cursor?.getInt(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_IDFOOD))
+            val dataQuantity = cursor?.getInt(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_QUANTITY))
+            val datatime = cursor?.getString(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_TIMEFOOD))
+            val item = ListMenu()
+            item.menu_ID = dataMenuID
+            item.menu_quant = dataQuantity
+            item.food_ID = datafoodID
+            item.menu_date = dataMenuDate
+            item.menu_time = datatime
+
+            dataList.add(item)
 
         }
         cursor.close()
@@ -311,6 +398,18 @@ class DbManager(context: Context) {
 
         return dataList
     }
+
+
+    fun readFoodTitle(id : Int): Cursor? {
+
+        var selected = DbnameClass.COLUMN_idFood  + " =$id"
+        val cursor = db?.query(DbnameClass.TABLE_FOOD,null,selected,null,null,null,null)
+
+       return  cursor
+
+
+    }
+
 
     // работа с днями недели
     fun insertToExecution(id: Int,day: String){

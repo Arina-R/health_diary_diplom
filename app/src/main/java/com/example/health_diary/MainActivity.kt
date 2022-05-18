@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-    val DbManager = com.example.health_diary.db.DbManager(this )
+    val DbManager = com.example.health_diary.db.DbManager(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,9 +32,7 @@ class MainActivity : AppCompatActivity() {
 
 
        DbManager.openDb()
-    //   DbManager.insertToUsers(et.text.toString())
-        DbManager.insertToType(wr)
-        DbManager.insertToType(hb)
+     DbManager.insertToUsers(et.text.toString())
 
 //вывод в текст вью
      val dataList = DbManager.readTypeData()

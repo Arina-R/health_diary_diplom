@@ -8,7 +8,7 @@ import android.widget.EditText
 
 class AddPosition : AppCompatActivity() {
 
-    val DbManager = com.example.health_diary.db.DbManager(this )
+    val DbManager = com.example.health_diary.db.DbManager(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -3,19 +3,74 @@ package com.example.health_diary
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.navigation.NavigationView
 
 class Nav_Pitanie : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+
+    val DbManager = com.example.health_diary.db.DbManager(this)
+    val brAdapter = com.example.health_diary.db.AdapterMenu(ArrayList(),this)
+    val luAdapter = com.example.health_diary.db.AdapterMenu(ArrayList(),this)
+    val diAdapter = com.example.health_diary.db.AdapterMenu(ArrayList(),this)
+    val snAdapter = com.example.health_diary.db.AdapterMenu(ArrayList(),this)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_nav_pitanie)
         val nav_view3 = findViewById<NavigationView>(R.id.nav_view3)
         nav_view3.setNavigationItemSelectedListener (this)
+        init()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        DbManager.closeDb()
+    }
+
+
+    override fun onResume() {
+        super.onResume()
+        DbManager.openDb()
+        fillAdapter()
+    }
+
+    fun init(){
+
+        val rc_menuB = findViewById<RecyclerView>(R.id.rc_breakfastmenu)
+        rc_menuB.layoutManager = LinearLayoutManager(this)
+        rc_menuB.adapter = brAdapter
+
+        val rc_menuL = findViewById<RecyclerView>(R.id.rc_lunchmenu)
+        rc_menuL.layoutManager = LinearLayoutManager(this)
+        rc_menuL.adapter = luAdapter
+
+        val rc_menuD = findViewById<RecyclerView>(R.id.rc_dinnerfmenu)
+        rc_menuD.layoutManager = LinearLayoutManager(this)
+        rc_menuD.adapter = diAdapter
+
+        val rc_menuS = findViewById<RecyclerView>(R.id.rc_snackmenu)
+        rc_menuS.layoutManager = LinearLayoutManager(this)
+        rc_menuS.adapter = snAdapter
+
+
+    }
+
+
+    fun fillAdapter(){
+
+        brAdapter.updateAdapter(DbManager.readMenuBreakfastData())
+        luAdapter.updateAdapter(DbManager.readMenulunchData())
+        diAdapter.updateAdapter(DbManager.readMenuDinnerData())
+        snAdapter.updateAdapter(DbManager.readMenuSnackData())
+
     }
 
 

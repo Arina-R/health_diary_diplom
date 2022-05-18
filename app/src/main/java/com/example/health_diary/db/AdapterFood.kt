@@ -65,4 +65,7 @@ class AdapterFood (listFood:ArrayList<ListFood>,contextF:Context ): RecyclerView
         notifyItemRemoved(pos)
 
     }
+
+
+
 }
