@@ -37,10 +37,6 @@ class CreateMenu : AppCompatActivity() {
         val intent = Intent(this, Nav_Pitanie::class.java)
         startActivity(intent)
     }
-    fun addPosition(view: View){
-        val intent = Intent(this, AddPosition::class.java)
-        startActivity(intent)
-    }
 
     lateinit var eat : String
 
@@ -102,7 +98,7 @@ class CreateMenu : AppCompatActivity() {
 
     private fun getTime(): String {
         val time = Calendar.getInstance().time
-        val formatter = SimpleDateFormat("EEE dd-MM-yy", Locale.getDefault())
+        val formatter = SimpleDateFormat("dd.M.yyyy", Locale.getDefault())
         return formatter.format(time)
 
     }

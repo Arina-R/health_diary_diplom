@@ -84,7 +84,7 @@ class Nav_Workout : AppCompatActivity(), NavigationView.OnNavigationItemSelected
     }
 
     fun createTask(view: View){
-        val intent = Intent(this, PageCreate::class.java)
+        val intent = Intent(this, PageMenuStat::class.java)
         startActivity(intent)
     }
 

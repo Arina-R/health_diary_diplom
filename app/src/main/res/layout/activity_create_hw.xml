@@ -8,195 +8,211 @@
     android:onClick="fri"
     tools:context=".Create_H_W">
 
-    <Button
-        android:id="@+id/b_mon2"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="500dp"
-        android:layout_marginEnd="4dp"
-        android:background="@drawable/back_mon"
-        android:foreground="@drawable/back_mon"
-        android:onClick="mon2"
-        app:layout_constraintEnd_toStartOf="@+id/b_tue2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <Button
-        android:id="@+id/b_mon"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="500dp"
-        android:layout_marginEnd="4dp"
-        android:background="@drawable/monday"
-        android:foreground="@drawable/monday"
-        android:onClick="mon"
-        app:layout_constraintEnd_toStartOf="@+id/b_tue2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <Button
-        android:id="@+id/b_wed2"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="500dp"
-        android:layout_marginEnd="4dp"
-        android:background="@drawable/back_wed"
-        android:foreground="@drawable/back_wed"
-        android:onClick="wed2"
-        app:layout_constraintEnd_toStartOf="@+id/b_thu2"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <Button
-        android:id="@+id/b_wed"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="500dp"
-        android:layout_marginEnd="4dp"
-        android:background="@drawable/wednesday"
-        android:foreground="@drawable/wednesday"
-        android:onClick="wed"
-        app:layout_constraintEnd_toStartOf="@+id/b_thu2"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <Button
-        android:id="@+id/b_fri2"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="500dp"
-        android:background="@drawable/back_fri"
-        android:foreground="@drawable/back_fri"
-        android:onClick="fri2"
-        app:layout_constraintStart_toEndOf="@+id/b_thu2"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <Button
-        android:id="@+id/b_fri"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="500dp"
-        android:background="@drawable/friday"
-        android:foreground="@drawable/friday"
-        android:onClick="fri"
-        app:layout_constraintStart_toEndOf="@+id/b_thu2"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <Button
-        android:id="@+id/b_thu2"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="500dp"
-        android:background="@drawable/back_thu"
-        android:foreground="@drawable/back_thu"
-        android:onClick="thu2"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/hideWeek"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
+        app:layout_constraintTop_toBottomOf="@+id/b_back_evening">
 
-    <Button
-        android:id="@+id/b_thu"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="500dp"
-        android:background="@drawable/thursday"
-        android:foreground="@drawable/thursday"
-        android:onClick="thu"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
+        <Button
+            android:id="@+id/b_mon2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/back_mon"
+            android:foreground="@drawable/back_mon"
+            android:onClick="mon2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView10"
+            tools:ignore="SpeakableTextPresentCheck" />
 
-    <Button
-        android:id="@+id/b_sun2"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="500dp"
-        android:layout_marginEnd="50dp"
-        android:background="@drawable/back_sun"
-        android:foreground="@drawable/back_sun"
-        android:onClick="sun2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/b_sat2"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
+        <Button
+            android:id="@+id/b_mon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/monday"
+            android:foreground="@drawable/monday"
+            android:onClick="mon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView10"
+            tools:ignore="SpeakableTextPresentCheck" />
 
-    <Button
-        android:id="@+id/b_sun"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="6dp"
-        android:layout_marginTop="500dp"
-        android:layout_marginEnd="50dp"
-        android:background="@drawable/sunday"
-        android:foreground="@drawable/sunday"
-        android:onClick="sun"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/b_sat2"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
+        <Button
+            android:id="@+id/b_tue2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="95dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/back_tue"
+            android:foreground="@drawable/back_tue"
+            android:onClick="tue2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView10"
+            tools:ignore="SpeakableTextPresentCheck" />
 
-    <Button
-        android:id="@+id/b_tue2"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="500dp"
-        android:layout_marginEnd="4dp"
-        android:background="@drawable/back_tue"
-        android:foreground="@drawable/back_tue"
-        android:onClick="tue2"
-        app:layout_constraintEnd_toStartOf="@+id/b_wed2"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
+        <Button
+            android:id="@+id/b_tue"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="95dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/tuesday"
+            android:foreground="@drawable/tuesday"
+            android:onClick="tue"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView10"
+            tools:ignore="SpeakableTextPresentCheck" />
 
-    <Button
-        android:id="@+id/b_tue"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="500dp"
-        android:layout_marginEnd="4dp"
-        android:background="@drawable/tuesday"
-        android:foreground="@drawable/tuesday"
-        android:onClick="tue"
-        app:layout_constraintEnd_toStartOf="@+id/b_wed2"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
+        <Button
+            android:id="@+id/b_wed2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="140dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/back_wed"
+            android:foreground="@drawable/back_wed"
+            android:onClick="wed2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView10"
+            tools:ignore="SpeakableTextPresentCheck" />
 
-    <Button
-        android:id="@+id/b_sat2"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="500dp"
-        android:background="@drawable/back_sat"
-        android:foreground="@drawable/back_sat"
-        android:onClick="sat2"
-        app:layout_constraintStart_toEndOf="@+id/b_fri2"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
+        <Button
+            android:id="@+id/b_wed"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="140dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/wednesday"
+            android:foreground="@drawable/wednesday"
+            android:onClick="wed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView10"
+            tools:ignore="SpeakableTextPresentCheck" />
 
-    <Button
-        android:id="@+id/b_sat"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="500dp"
-        android:background="@drawable/saturday"
-        android:foreground="@drawable/saturday"
-        android:onClick="sat"
-        app:layout_constraintStart_toEndOf="@+id/b_fri2"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
+        <Button
+            android:id="@+id/b_thu2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/back_thu"
+            android:foreground="@drawable/back_thu"
+            android:onClick="thu2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView10"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <Button
+            android:id="@+id/b_thu"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/thursday"
+            android:foreground="@drawable/thursday"
+            android:onClick="thu"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView10"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <Button
+            android:id="@+id/b_fri2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="140dp"
+            android:background="@drawable/back_fri"
+            android:foreground="@drawable/back_fri"
+            android:onClick="fri2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView10"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <Button
+            android:id="@+id/b_fri"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="140dp"
+            android:background="@drawable/friday"
+            android:foreground="@drawable/friday"
+            android:onClick="fri"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView10"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <Button
+            android:id="@+id/b_sat2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="95dp"
+            android:background="@drawable/back_sat"
+            android:foreground="@drawable/back_sat"
+            android:onClick="sat2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView10"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <Button
+            android:id="@+id/b_sat"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="95dp"
+            android:background="@drawable/saturday"
+            android:foreground="@drawable/saturday"
+            android:onClick="sat"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView10"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <Button
+            android:id="@+id/b_sun2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="50dp"
+            android:background="@drawable/back_sun"
+            android:foreground="@drawable/back_sun"
+            android:onClick="sun2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView10"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <Button
+            android:id="@+id/b_sun"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="50dp"
+            android:background="@drawable/sunday"
+            android:foreground="@drawable/sunday"
+            android:onClick="sun"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView10"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="174dp"
+            android:layout_height="29dp"
+            android:layout_marginStart="40dp"
+            android:fontFamily="@font/bebas_neue"
+            android:text="День недели:"
+            android:textAlignment="textStart"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/textView5"
@@ -442,20 +458,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8"
         tools:ignore="SpeakableTextPresentCheck" />
-
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="174dp"
-        android:layout_height="29dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="40dp"
-        android:fontFamily="@font/bebas_neue"
-        android:text="Время:"
-        android:textAlignment="textStart"
-        android:textColor="@color/white"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/b_back_morning" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

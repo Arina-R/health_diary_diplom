@@ -9,8 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 
-
-
     val DbManager = com.example.health_diary.db.DbManager(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,30 +16,28 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 
-    val hb = "Привычка"
     val wr = "Тренировка"
+    val hb = "Привычка"
+
 
     fun autorization(view: View){
 
         var et = findViewById<EditText>(R.id.EdiTextName)
 
 
-     var tv = findViewById<TextView>(R.id.textView22)
-
-       tv.text = ""
-
-
        DbManager.openDb()
-     DbManager.insertToUsers(et.text.toString())
+      DbManager.insertToUsers(et.text.toString())
+        DbManager.insertToType(wr)
+        DbManager.insertToType(hb)
 
 //вывод в текст вью
-     val dataList = DbManager.readTypeData()
+/* val dataList = DbManager.readTypeData()
         for(item in dataList){
             tv.append(item)
         }
 
      val intent = Intent(this, MainMenu::class.java)
-        startActivity(intent)
+        startActivity(intent)*/
     }
 
 

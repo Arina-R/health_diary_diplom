@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".PageMenuStat">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rc_snackmenuS"
+        android:layout_width="325dp"
+        android:layout_height="100dp"
+        android:background="@drawable/greybox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TV_rc_snackmenu2" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rc_breakfastmenuS"
+        android:layout_width="325dp"
+        android:layout_height="100dp"
+        android:background="@drawable/greybox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TV_rc_breakf2">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <TextView
+        android:id="@+id/tv_menuondate"
+        android:layout_width="230dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/bebas_neue"
+        android:text="Меню"
+        android:textAlignment="center"
+        android:textColor="@color/maincolor"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/TV_rc_snackmenu2"
+        android:layout_width="325dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/taskform"
+        android:fontFamily="@font/bebas_neue"
+        android:gravity="center"
+        android:text="Перекус"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rc_dinnerfmenuS" />
+
+    <TextView
+        android:id="@+id/TV_rc_breakf2"
+        android:layout_width="325dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/taskform"
+        android:fontFamily="@font/bebas_neue"
+        android:gravity="center"
+        android:text="Завтрак"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rc_lunchmenuS"
+        android:layout_width="325dp"
+        android:layout_height="100dp"
+        android:background="@drawable/greybox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TV_rc_lunch2" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rc_dinnerfmenuS"
+        android:layout_width="325dp"
+        android:layout_height="100dp"
+        android:background="@drawable/greybox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TV_rc_dinner2">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <TextView
+        android:id="@+id/TV_rc_lunch2"
+        android:layout_width="325dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/taskform"
+        android:fontFamily="@font/bebas_neue"
+        android:gravity="center"
+        android:text=" Обед"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rc_breakfastmenuS" />
+
+    <TextView
+        android:id="@+id/TV_rc_dinner2"
+        android:layout_width="325dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/taskform"
+        android:fontFamily="@font/bebas_neue"
+        android:gravity="center"
+        android:text="Ужин"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rc_lunchmenuS" />
+
+    <Button
+        android:id="@+id/b_back7"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/backgreen"
+        android:foreground="@drawable/backgreen"
+        android:onClick="back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

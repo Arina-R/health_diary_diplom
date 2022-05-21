@@ -17,7 +17,7 @@
         <entry key="..\:/Users/Master/AndroidStudioProjects/health_diary/app/src/main/res/layout/activity_main_menu.xml" value="0.33" />
         <entry key="..\:/Users/Master/AndroidStudioProjects/health_diary/app/src/main/res/layout/activity_nav_habit.xml" value="0.30742049469964666" />
         <entry key="..\:/Users/Master/AndroidStudioProjects/health_diary/app/src/main/res/layout/activity_nav_norma.xml" value="0.5" />
-        <entry key="..\:/Users/Master/AndroidStudioProjects/health_diary/app/src/main/res/layout/activity_nav_pitanie.xml" value="0.6643356643356644" />
+        <entry key="..\:/Users/Master/AndroidStudioProjects/health_diary/app/src/main/res/layout/activity_nav_pitanie.xml" value="0.5693069306930693" />
         <entry key="..\:/Users/Master/AndroidStudioProjects/health_diary/app/src/main/res/layout/activity_nav_stat.xml" value="0.359375" />
         <entry key="..\:/Users/Master/AndroidStudioProjects/health_diary/app/src/main/res/layout/activity_nav_workout.xml" value="0.359375" />
         <entry key="..\:/Users/Master/AndroidStudioProjects/health_diary/app/src/main/res/layout/activity_navigation_menu.xml" value="0.359375" />
@@ -26,12 +26,13 @@
         <entry key="..\:/Users/Master/AndroidStudioProjects/health_diary/app/src/main/res/layout/activity_page_food.xml" value="0.359375" />
         <entry key="..\:/Users/Master/AndroidStudioProjects/health_diary/app/src/main/res/layout/activity_page_habits.xml" value="0.359375" />
         <entry key="..\:/Users/Master/AndroidStudioProjects/health_diary/app/src/main/res/layout/activity_page_menu.xml" value="0.359375" />
+        <entry key="..\:/Users/Master/AndroidStudioProjects/health_diary/app/src/main/res/layout/activity_page_menu_stat.xml" value="0.5" />
         <entry key="..\:/Users/Master/AndroidStudioProjects/health_diary/app/src/main/res/layout/activity_page_workout.xml" value="0.359375" />
         <entry key="..\:/Users/Master/AndroidStudioProjects/health_diary/app/src/main/res/layout/activity_statistica.xml" value="0.359375" />
         <entry key="..\:/Users/Master/AndroidStudioProjects/health_diary/app/src/main/res/layout/fragment_fr_glav_menu.xml" value="0.359375" />
         <entry key="..\:/Users/Master/AndroidStudioProjects/health_diary/app/src/main/res/layout/header_menu.xml" value="0.5" />
         <entry key="..\:/Users/Master/AndroidStudioProjects/health_diary/app/src/main/res/layout/rc_food.xml" value="0.359375" />
-        <entry key="..\:/Users/Master/AndroidStudioProjects/health_diary/app/src/main/res/layout/rc_foodtime.xml" value="0.359375" />
+        <entry key="..\:/Users/Master/AndroidStudioProjects/health_diary/app/src/main/res/layout/rc_foodtime.xml" value="0.5" />
         <entry key="..\:/Users/Master/AndroidStudioProjects/health_diary/app/src/main/res/layout/rc_item.xml" value="0.359375" />
         <entry key="..\:/Users/Master/AndroidStudioProjects/health_diary/app/src/main/res/layout/rc_itemfortask.xml" value="0.4553734061930783" />
         <entry key="..\:/Users/Master/AndroidStudioProjects/health_diary/app/src/main/res/layout/rc_menu.xml" value="0.359375" />

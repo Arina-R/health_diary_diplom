@@ -74,7 +74,7 @@ class Nav_habit : AppCompatActivity(),NavigationView.OnNavigationItemSelectedLis
     }
 
     fun createTask(view: View){
-        val intent = Intent(this, PageCreate::class.java)
+        val intent = Intent(this, PageMenuStat::class.java)
         startActivity(intent)
     }
 

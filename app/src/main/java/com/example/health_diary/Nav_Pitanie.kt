@@ -13,6 +13,9 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.navigation.NavigationView
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class Nav_Pitanie : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -42,6 +45,14 @@ class Nav_Pitanie : AppCompatActivity(), NavigationView.OnNavigationItemSelected
         fillAdapter()
     }
 
+    private fun getTime(): String {
+        val time = Calendar.getInstance().time
+        val formatter = SimpleDateFormat("dd.M.yyyy", Locale.getDefault())
+        return formatter.format(time)
+
+
+    }
+
     fun init(){
 
         val rc_menuB = findViewById<RecyclerView>(R.id.rc_breakfastmenu)
@@ -60,16 +71,15 @@ class Nav_Pitanie : AppCompatActivity(), NavigationView.OnNavigationItemSelected
         rc_menuS.layoutManager = LinearLayoutManager(this)
         rc_menuS.adapter = snAdapter
 
-
     }
 
 
     fun fillAdapter(){
 
-        brAdapter.updateAdapter(DbManager.readMenuBreakfastData())
-        luAdapter.updateAdapter(DbManager.readMenulunchData())
-        diAdapter.updateAdapter(DbManager.readMenuDinnerData())
-        snAdapter.updateAdapter(DbManager.readMenuSnackData())
+        brAdapter.updateAdapter(DbManager.readMenuBreakfastData(getTime()))
+        luAdapter.updateAdapter(DbManager.readMenulunchData(getTime()))
+        diAdapter.updateAdapter(DbManager.readMenuDinnerData(getTime()))
+        snAdapter.updateAdapter(DbManager.readMenuSnackData(getTime()))
 
     }
 

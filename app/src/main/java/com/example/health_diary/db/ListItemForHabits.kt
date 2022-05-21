@@ -6,5 +6,5 @@ package com.example.health_diary.db
       var typeidTask = 0
     lateinit var timeTask : String
     var task_ID =0
-      var isChecked  = false
+
  }

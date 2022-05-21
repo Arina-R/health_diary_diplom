@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.health_diary.db.IntentConstTask
 
 class Create_H_W : AppCompatActivity() {
@@ -33,6 +34,27 @@ class Create_H_W : AppCompatActivity() {
                 var et = findViewById<EditText>(R.id.ET_title)
                et.setText(i.getStringExtra(IntentConstTask.I_title))
                 id =i.getIntExtra(IntentConstTask.I_id_task,0)
+
+                var timeI = i.getStringExtra(IntentConstTask.I_time)
+                when(timeI){
+                    "Утро"  -> {time = "Утро"
+                        changeTime()}
+                    "День" -> {time = "День"
+                        changeTime()}
+                    "Вечер" -> {time = "Вечер"
+                        changeTime()}
+                }
+
+                var typeI = i.getIntExtra(IntentConstTask.I_typeid, 0)
+                when(typeI){
+                    1  -> {type = 1
+                        changTask()}
+                    2 -> {type = 2
+                        changTask()}
+                }
+
+                var layoutHide = findViewById<ConstraintLayout>(R.id.hideWeek)
+                layoutHide.visibility = View.GONE
                 Log.d("Mylog","------------------------------------проверка id привычки $id")
             }
         }
@@ -43,7 +65,7 @@ class Create_H_W : AppCompatActivity() {
         DbManager.openDb()
     }
     fun back(view: View){
-        val intent = Intent(this, PageCreate::class.java)
+        val intent = Intent(this, PageMenuStat::class.java)
         startActivity(intent)
     }
 
@@ -102,123 +124,134 @@ class Create_H_W : AppCompatActivity() {
 
     fun mon(view: View){
         m = 2
-        checkDay()
-
+       // checkDay()
+        val mon = findViewById<Button>(R.id.b_mon)
+        val monb = findViewById<Button>(R.id.b_mon2)
+        if (m==2){
+            mon.visibility = View.GONE
+            monb.visibility = View.VISIBLE
+        }
+        else{mon.visibility = View.VISIBLE }
     }
     fun tue(view: View){
         tu = 2
-        checkDay()
+      //  checkDay()
+        val tue = findViewById<Button>(R.id.b_tue)
+        val tueb = findViewById<Button>(R.id.b_tue2)
+        if (tu==2){
+            tue.visibility = View.GONE
+            tueb.visibility = View.VISIBLE
+        }
+        else{tue.visibility = View.VISIBLE}
     }
     fun wed(view: View){
         w = 2
-        checkDay()
+      //  checkDay()
+        val wed = findViewById<Button>(R.id.b_wed)
+        val wedb = findViewById<Button>(R.id.b_wed2)
+        if (w==2){
+            wed.visibility = View.GONE
+            wedb.visibility = View.VISIBLE
+        }
+        else{wed.visibility = View.VISIBLE }
     }
     fun thu(view: View){
         th = 2
-       checkDay()
+      // checkDay()
+        val thu = findViewById<Button>(R.id.b_thu)
+        val thub = findViewById<Button>(R.id.b_thu2)
+        if (th==2){
+            thu.visibility = View.GONE
+            thub.visibility = View.VISIBLE
+        }
+        else{thu.visibility = View.VISIBLE }
     }
     fun fri(view: View){
         f = 2
-        checkDay()
+      //  checkDay()
+        val fri = findViewById<Button>(R.id.b_fri)
+        val frib = findViewById<Button>(R.id.b_fri2)
+        if (f==2){
+            fri.visibility = View.GONE
+            frib.visibility = View.VISIBLE
+        }
+        else{fri.visibility = View.VISIBLE}
     }
     fun sat(view: View){
         sa = 2
-        checkDay()
+      //  checkDay()
+        val sat = findViewById<Button>(R.id.b_sat)
+        val satb = findViewById<Button>(R.id.b_sat2)
+        if (sa==2){
+            sat.visibility = View.GONE
+            satb.visibility = View.VISIBLE
+        }
+        else{sat.visibility = View.VISIBLE }
     }
     fun sun(view: View){
         su = 2
-        checkDay()
+        //checkDay()
+        val sun = findViewById<Button>(R.id.b_sun)
+        val sunb = findViewById<Button>(R.id.b_sun2)
+        if (su==2){
+            sun.visibility = View.GONE
+            sunb.visibility = View.VISIBLE
+        }
+        else{sun.visibility = View.VISIBLE }
     }
 
 
 
     fun mon2(view: View){
         m = 1
-        checkDay()
+        val mon = findViewById<Button>(R.id.b_mon)
+        val monb = findViewById<Button>(R.id.b_mon2)
+        mon.visibility = View.VISIBLE
+        monb.visibility = View.GONE
     }
     fun tue2(view: View){
         tu = 1
-        checkDay()
+        val tueb = findViewById<Button>(R.id.b_tue2)
+        val tue = findViewById<Button>(R.id.b_tue)
+        tue.visibility = View.VISIBLE
+        tueb.visibility = View.GONE
     }
     fun wed2(view: View){
         w =1
-        checkDay()
+        val wedb = findViewById<Button>(R.id.b_wed2)
+        val wed = findViewById<Button>(R.id.b_wed)
+        wed.visibility = View.VISIBLE
+        wedb.visibility = View.GONE
     }
     fun thu2(view: View){
         th =1
-        checkDay()
+        val thu = findViewById<Button>(R.id.b_thu)
+        val thub = findViewById<Button>(R.id.b_thu2)
+        thu.visibility = View.VISIBLE
+        thub.visibility = View.GONE
     }
     fun fri2(view: View){
         f = 1
-        checkDay()
+        val fri = findViewById<Button>(R.id.b_fri)
+        val frib = findViewById<Button>(R.id.b_fri2)
+        fri.visibility = View.VISIBLE
+        frib.visibility = View.GONE
     }
     fun sat2(view: View){
         sa = 1
-        checkDay()
+        val sat = findViewById<Button>(R.id.b_sat)
+        val satb = findViewById<Button>(R.id.b_sat2)
+        sat.visibility = View.VISIBLE
+        satb.visibility = View.GONE
     }
     fun sun2(view: View){
         su = 1
-       checkDay()
-    }
-
-    fun checkDay(){
-        val mon = findViewById<Button>(R.id.b_mon)
-        val monb = findViewById<Button>(R.id.b_mon2)
-        val tue = findViewById<Button>(R.id.b_tue)
-        val tueb = findViewById<Button>(R.id.b_tue2)
-        val wed = findViewById<Button>(R.id.b_wed)
-        val wedb = findViewById<Button>(R.id.b_wed2)
-        val thu = findViewById<Button>(R.id.b_thu)
-        val thub = findViewById<Button>(R.id.b_thu2)
-        val fri = findViewById<Button>(R.id.b_fri)
-        val frib = findViewById<Button>(R.id.b_fri2)
-        val sat = findViewById<Button>(R.id.b_sat)
-        val satb = findViewById<Button>(R.id.b_sat2)
         val sun = findViewById<Button>(R.id.b_sun)
         val sunb = findViewById<Button>(R.id.b_sun2)
-
-        if (m==2){
-            mon.visibility = View.GONE
-        }
-        else{mon.visibility = View.VISIBLE
-            monb.visibility = View.GONE}
-
-        if (tu==2){
-            tue.visibility = View.GONE
-        }
-        else{tue.visibility = View.VISIBLE
-            tueb.visibility = View.GONE}
-
-        if (w==2){
-            wed.visibility = View.GONE
-        }
-        else{wed.visibility = View.VISIBLE
-            wedb.visibility = View.GONE}
-
-        if (th==2){
-            thu.visibility = View.GONE
-        }
-        else{thu.visibility = View.VISIBLE
-            thub.visibility = View.GONE}
-
-        if (f==2){
-            fri.visibility = View.GONE
-        }
-        else{fri.visibility = View.VISIBLE
-            frib.visibility = View.GONE}
-
-        if (sa==2){
-            sat.visibility = View.GONE
-        }
-        else{sat.visibility = View.VISIBLE
-            satb.visibility = View.GONE}
-
-        if (su==2){
-            sun.visibility = View.GONE
-        }
-        else{sun.visibility = View.VISIBLE
-            sunb.visibility = View.GONE}
+        sun.visibility = View.VISIBLE
+        sunb.visibility = View.GONE
     }
+
 
 
     fun bworkout(view: View){
@@ -248,6 +281,7 @@ class Create_H_W : AppCompatActivity() {
                 but_workout.visibility = View.VISIBLE
             }
         }
+
 
     }
 

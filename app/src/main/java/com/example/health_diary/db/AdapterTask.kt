@@ -11,21 +11,63 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.health_diary.Create_H_W
 import com.example.health_diary.R
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
-class AdapterTask(listTask:ArrayList<ListItemForHabits>,contextT: Context): RecyclerView.Adapter<AdapterTask.Holder>() {
+class AdapterTask(listTask:ArrayList<ListExecution>,contextT: Context): RecyclerView.Adapter<AdapterTask.Holder>() {
 
     var listArray =listTask
     var context = contextT
 
     class Holder(itemView: View, contextVH: Context) : RecyclerView.ViewHolder(itemView) {
+        val DbManager = com.example.health_diary.db.DbManager(contextVH)
 
         val tvTitle = itemView.findViewById<TextView>(R.id.TV_rc_task)
         val chBOX = itemView.findViewById<CheckBox>(R.id.checkBox)
         val context = contextVH
 
-        fun setData(item: ListItemForHabits){
-            tvTitle.text = item.task_title
-            chBOX.isChecked = item.isChecked
+
+
+         fun getTimeset(): String {
+            val time = Calendar.getInstance().time
+            val formatter = SimpleDateFormat("dd.M.yyyy", Locale.getDefault())
+            return formatter.format(time)
+        }
+
+        fun getWeekDay(): String{
+            val time = Calendar.getInstance().time
+            val formatter = SimpleDateFormat("EEE", Locale.getDefault())
+            return formatter.format(time)
+        }
+
+        fun setData(item: ListExecution){
+
+            DbManager.openDb()
+
+            var taskTit = DbManager.readTaskTitle(item.taskEX_ID)
+            var tasktitstring=  taskTit.toString()
+            var titITOG = tasktitstring.substringAfter('[')
+            titITOG = titITOG.substringBeforeLast(']')
+
+                    try {
+// заполнение выполнения привычки
+                        var stdone = DbManager.readStaticDataForTask(item.taskEX_ID, getTimeset())
+                        var iii = stdone.toString()
+                        var itog = iii.substringAfter('[')
+                        itog = itog.substringBeforeLast(']')
+                        var itogId = Integer.parseInt(itog)
+
+                        tvTitle.text = titITOG
+                        Log.d("Mylog","try ${tvTitle.text}")
+                        if (itogId == 1) {
+                            chBOX.isChecked = true
+                            tvTitle.text = titITOG
+                        }
+                    } catch (e: Exception) {
+                        tvTitle.text = titITOG
+                        Log.d("Mylog","catch ${tvTitle.text}")
+                    }
         }
     }
 
@@ -41,18 +83,33 @@ class AdapterTask(listTask:ArrayList<ListItemForHabits>,contextT: Context): Recy
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
+
         holder.setData(listArray.get(position))
 
     }
 
-    fun updateAdapter(listItems :List<ListItemForHabits>){
+    fun updateAdapter(listItems :List<ListExecution>){
         listArray.clear()
         listArray.addAll(listItems)
         notifyDataSetChanged()
+    }
+
+    private fun getTime(): String {
+        val time = Calendar.getInstance().time
+        val formatter = SimpleDateFormat("dd.M.yyyy", Locale.getDefault())
+        return formatter.format(time)
+
+    }
+    fun checkedTask(pos: Int, dbManager: DbManager ) {
+
+       var exsist = dbManager.readStaticDataForTask(listArray[pos].taskEX_ID, getTime())
+        Log.d("Mylog","catch ${exsist.toString()}")
+        if(exsist.toString() == "[]") {
+            dbManager.insertToStatic(listArray[pos].taskEX_ID, getTime(), true)
+        }
 
 
     }
-
 
 
 }

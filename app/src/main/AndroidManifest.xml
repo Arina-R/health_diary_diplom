@@ -28,7 +28,7 @@
             android:name=".Nav_Stat"
             android:exported="false" />
         <activity
-            android:name=".PageCreate"
+            android:name=".PageMenuStat"
             android:exported="false" />
         <activity
             android:name=".MainMenu"

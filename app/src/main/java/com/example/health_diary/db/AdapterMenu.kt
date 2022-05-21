@@ -11,33 +11,44 @@ import com.example.health_diary.R
 import android.content.Context as Context1
 
 class AdapterMenu (listMenu:ArrayList<ListMenu>, contextM: Context1): RecyclerView.Adapter<AdapterMenu.Holder>() {
-        var listArray =listMenu
-        var context = contextM
+    var listArray =listMenu
+          //  var  listArrayFood = listFood
+      var context = contextM
+        val DbManager = com.example.health_diary.db.DbManager(contextM)
 
 
 
-        class Holder(itemView: View, contextVM: Context1) : RecyclerView.ViewHolder(itemView) {
+
+    class Holder(itemView: View, contextVM: Context1) : RecyclerView.ViewHolder(itemView) {
+        val DbManager = com.example.health_diary.db.DbManager(contextVM)
 
             val tvTitle = itemView.findViewById<TextView>(R.id.TV_title_food)
 
             val tvQua = itemView.findViewById<TextView>(R.id.TV_menu_qua)
-
             val context = contextVM
 
             fun setData( itemMenu: ListMenu){
+                DbManager.openDb()
+                var sets =  DbManager.readFoodTitle(itemMenu.food_ID)
 
-               tvTitle.text = itemMenu.food_ID.toString()
+                var iii=  sets.toString()
+                var itog = iii.substringAfter('[')
+                itog = itog.substringBeforeLast(']')
+               tvTitle.text = itog
 
-                tvQua.text= itemMenu.menu_quant.toString() + " гр."
-                val itemTit = itemView.findViewById<TextView>(R.id.TV_title_food)
-                Log.d("Mylog","tit ${itemTit.text}")
-                if (itemTit.text=="1"){
-                    tvTitle.text = "ARINA"
-                }
 
+                var tvcal = DbManager.readFoodCalories(itemMenu.food_ID)
+
+                var calor=  tvcal.toString()
+                var itogcalor = calor.substringAfter('[')
+                itogcalor = itogcalor.substringBeforeLast(']')
+                var itogCAL = Integer.parseInt(itogcalor)
+
+                var sumcal = itemMenu.menu_quant.toInt() * itogCAL
+                tvQua.text= "$sumcal калл.(${itemMenu.menu_quant.toInt()}г.)"
             }
 
-        }
+    }
 
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
@@ -53,6 +64,7 @@ class AdapterMenu (listMenu:ArrayList<ListMenu>, contextM: Context1): RecyclerVi
 
         override fun onBindViewHolder(holder: Holder, position: Int) {
             holder.setData(listArray.get(position))
+
 
         }
 

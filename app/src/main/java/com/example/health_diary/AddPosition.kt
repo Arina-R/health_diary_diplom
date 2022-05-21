@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
+import android.widget.Toast
 
 class AddPosition : AppCompatActivity() {
 
@@ -22,10 +23,23 @@ class AddPosition : AppCompatActivity() {
 
         var Cal =Integer.parseInt(etCalories.getText().toString())
 
-        DbManager.insertToFood(etName.text.toString(),Cal)
-        val intent = Intent(this, CreateMenu::class.java)
-        startActivity(intent)
+        if(etName.text.toString() == ""|| etName.text.toString() == " "){
+            Toast.makeText(this,"Введите название продукта",Toast.LENGTH_SHORT).show()
+        }
+        else {
 
+           try{
+
+           }
+           catch(e: Exception){
+
+           }
+
+
+            DbManager.insertToFood(etName.text.toString(), Cal)
+            val intent = Intent(this, PageFood::class.java)
+            startActivity(intent)
+        }
 
     }
 
@@ -40,7 +54,7 @@ class AddPosition : AppCompatActivity() {
     }
 
     fun back(view: View){
-        val intent = Intent(this, CreateMenu::class.java)
+        val intent = Intent(this, PageFood::class.java)
         startActivity(intent)
     }
 }

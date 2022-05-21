@@ -11,6 +11,7 @@ class DbManager(context: Context) {
     val DbHelper = DbHelper(context)
     var db: SQLiteDatabase? = null
 
+
     fun openDb(){
         db = DbHelper.writableDatabase
     }
@@ -21,21 +22,14 @@ class DbManager(context: Context) {
         val dataList = ArrayList<String>()
         var dataText : String
         val selected = DbnameClass.column_name + " = \"tasks\""
-        Log.d("Mylog", " $selected")
         val cursor = db?.query(DbnameClass.sqlite_sequence,null,selected,null,null,null,null)
-        Log.d("Mylog", " $cursor")
         while (cursor?.moveToNext()!!){
              dataText = cursor?.getString(cursor.getColumnIndexOrThrow(DbnameClass.column_seq))
             dataList.add((dataText.toString()))
-            Log.d("Mylog", "  data text  $dataText")
         }
         cursor.close()
-        Log.d("Mylog", "  data text  $dataList")
         return dataList
     }
-
-
-
 
 //работа с таблицей пользователей
     fun insertToUsers(name: String){
@@ -47,22 +41,6 @@ class DbManager(context: Context) {
 
     }
 
-    fun readUsersData() : ArrayList<String>{
-        val dataList = ArrayList<String>()
-
-        val cursor = db?.query(DbnameClass.TABLE_USERS,null,null,null,null,null,null)
-
-            while (cursor?.moveToNext()!!){
-                val dataText = cursor?.getString(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_NAME))
-                dataList.add((dataText.toString()))
-
-            }
-        cursor.close()
-
-        return dataList
-    }
-
-
 // работа с заданиями
     fun insertToUTask(title: String, time: String, type : Int, user: Int){
         val values = ContentValues().apply {
@@ -73,6 +51,21 @@ class DbManager(context: Context) {
         }
 
         db?.insert(DbnameClass.TABLE_TASK,null,values)
+
+    }
+
+    fun readTaskTitle(id : Int): ArrayList<String>{
+        val dataList = ArrayList<String>()
+
+        var selected = DbnameClass.COLUMN_idTask  + " =$id"
+        val cursor = db?.query(DbnameClass.TABLE_TASK,null,selected,null,null,null,null)
+
+        while (cursor?.moveToNext()!!){
+            val dataText = cursor?.getString(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_TASKTITLE))
+            dataList.add((dataText.toString()))
+        }
+        cursor.close()
+        return dataList
 
     }
 
@@ -183,20 +176,6 @@ class DbManager(context: Context) {
 
     }
 
-    fun readTypeData() : ArrayList<String>{
-        val dataList = ArrayList<String>()
-
-        val cursor = db?.query(DbnameClass.TABLE_TYPEOFTASK,null,null,null,null,null,null)
-
-        while (cursor?.moveToNext()!!){
-            val dataText = cursor?.getString(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_TYPETITLE))
-            dataList.add((dataText.toString()))
-
-        }
-        cursor.close()
-
-        return dataList
-    }
 
 
     // работа со статистикой
@@ -212,21 +191,32 @@ class DbManager(context: Context) {
 
     }
 
-    fun readStaticData() : ArrayList<String>{
+    fun readStaticData(curDate:String) : Int {
         val dataList = ArrayList<String>()
 
-        val cursor = db?.query(DbnameClass.TABLE_STATISTIC,null,null,null,null,null,null)
-
+        val selected = DbnameClass.COLUMN_DATE + " = \"$curDate\""
+        val cursor = db?.query(DbnameClass.TABLE_STATISTIC,null,selected,null,null,null,null)
         while (cursor?.moveToNext()!!){
             val dataText = cursor?.getString(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_DATE))
             dataList.add((dataText.toString()))
-
         }
         cursor.close()
-
-        return dataList
+        return dataList.size
     }
 
+    fun readStaticDataForTask(idtask: Int,date:String ) : ArrayList<String> {
+        val dataList = ArrayList<String>()
+
+        val selected = DbnameClass.COLUMN_IDTASK + " = $idtask" +" AND " + DbnameClass.COLUMN_DATE + " = \"$date\""
+        val cursor = db?.query(DbnameClass.TABLE_STATISTIC,null,selected,null,null,null,null)
+        while (cursor?.moveToNext()!!){
+            val dataText = cursor?.getString(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_DONE))
+            dataList.add((dataText.toString()))
+        }
+        cursor.close()
+        return dataList
+
+    }
 
 
     // работа c меню
@@ -243,28 +233,11 @@ class DbManager(context: Context) {
 
     }
 
-    fun searchFood(name: String): ArrayList<String> {
-        val dataList = ArrayList<String>()
-        var dataText : String
-        val selected = DbnameClass.COLUMN_TITLE_MENU + " = \"$name\""
-
-        val cursor = db?.query(DbnameClass.TABLE_FOOD,null,selected,null,null,null,null)
-
-        while (cursor?.moveToNext()!!){
-            dataText = cursor?.getString(cursor.getColumnIndexOrThrow(DbnameClass.column_seq))
-            dataList.add((dataText.toString()))
-
-        }
-        cursor.close()
-
-        return dataList
-    }
-
-
-    fun readMenuBreakfastData() : ArrayList<ListMenu>{
+    fun readMenuBreakfastData(date: String) : ArrayList<ListMenu>{
         val dataList = ArrayList<ListMenu>()
 
-        val selected = DbnameClass.COLUMN_TIMEFOOD + " = \"Завтрак\""
+        val selected = DbnameClass.COLUMN_TIMEFOOD + " = \"Завтрак\"" +" AND " + DbnameClass.COLUMN_DATEmenu + " = \"$date\""
+        Log.d("Mylog","hfhfh ${selected.toString()}")
         val cursor = db?.query(DbnameClass.TABLE_MENU,null,selected,null,null,null,null)
 
         while (cursor?.moveToNext()!!){
@@ -288,10 +261,10 @@ class DbManager(context: Context) {
         return dataList
     }
 
-    fun readMenulunchData() : ArrayList<ListMenu>{
+    fun readMenulunchData(date: String) : ArrayList<ListMenu>{
         val dataList = ArrayList<ListMenu>()
 
-        val selected = DbnameClass.COLUMN_TIMEFOOD + " = \"Обед\""
+        val selected = DbnameClass.COLUMN_TIMEFOOD + " = \"Обед\"" +" AND " + DbnameClass.COLUMN_DATEmenu + " = \"$date\""
         val cursor = db?.query(DbnameClass.TABLE_MENU,null,selected,null,null,null,null)
 
         while (cursor?.moveToNext()!!){
@@ -315,10 +288,10 @@ class DbManager(context: Context) {
         return dataList
     }
 
-    fun readMenuDinnerData() : ArrayList<ListMenu>{
+    fun readMenuDinnerData(date: String) : ArrayList<ListMenu>{
         val dataList = ArrayList<ListMenu>()
 
-        val selected = DbnameClass.COLUMN_TIMEFOOD + " = \"Ужин\""
+        val selected = DbnameClass.COLUMN_TIMEFOOD + " = \"Ужин\"" +" AND " + DbnameClass.COLUMN_DATEmenu + " = \"$date\""
         val cursor = db?.query(DbnameClass.TABLE_MENU,null,selected,null,null,null,null)
 
         while (cursor?.moveToNext()!!){
@@ -342,10 +315,10 @@ class DbManager(context: Context) {
         return dataList
     }
 
-    fun readMenuSnackData() : ArrayList<ListMenu>{
+    fun readMenuSnackData(date: String) : ArrayList<ListMenu>{
         val dataList = ArrayList<ListMenu>()
 
-        val selected = DbnameClass.COLUMN_TIMEFOOD + " = \"Перекус\""
+        val selected = DbnameClass.COLUMN_TIMEFOOD + " = \"Перекус\""+" AND " + DbnameClass.COLUMN_DATEmenu + " = \"$date\""
         val cursor = db?.query(DbnameClass.TABLE_MENU,null,selected,null,null,null,null)
 
         while (cursor?.moveToNext()!!){
@@ -400,13 +373,33 @@ class DbManager(context: Context) {
     }
 
 
-    fun readFoodTitle(id : Int): Cursor? {
+    fun readFoodTitle(id : Int): ArrayList<String>{
+        val dataList = ArrayList<String>()
 
         var selected = DbnameClass.COLUMN_idFood  + " =$id"
         val cursor = db?.query(DbnameClass.TABLE_FOOD,null,selected,null,null,null,null)
 
-       return  cursor
+            while (cursor?.moveToNext()!!){
+                val dataText = cursor?.getString(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_TITLE_MENU))
+                dataList.add((dataText.toString()))
+            }
+            cursor.close()
+            return dataList
 
+    }
+
+    fun readFoodCalories(id : Int): ArrayList<Int>{
+        val dataList = ArrayList<Int>()
+
+        var selected = DbnameClass.COLUMN_idFood  + " =$id"
+        val cursor = db?.query(DbnameClass.TABLE_FOOD,null,selected,null,null,null,null)
+
+        while (cursor?.moveToNext()!!){
+            val dataText = cursor?.getString(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_CALORIES))
+            dataList.add((dataText.toInt()))
+        }
+        cursor.close()
+        return dataList
 
     }
 
@@ -422,20 +415,27 @@ class DbManager(context: Context) {
 
     }
 
-    fun readExecutionData() : ArrayList<String>{
-        val dataList = ArrayList<String>()
+    fun readExecutionData(week :String) : ArrayList<ListExecution>{
+        val dataList = ArrayList<ListExecution>()
 
-        val cursor = db?.query(DbnameClass.TABLE_EXECUTIONDAY,null,null,null,null,null,null)
+        var selected = DbnameClass.COLUMN_DAYOFWEEK + "= \"$week\""
+        val cursor = db?.query(DbnameClass.TABLE_EXECUTIONDAY,null,selected,null,null,null,null)
 
         while (cursor?.moveToNext()!!){
-            val dataText = cursor?.getString(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_DAYOFWEEK))
-            dataList.add((dataText.toString()))
+            val dataIDtask = cursor?.getInt(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_IDTASKex))
+            val dataEXday = cursor?.getString(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_DAYOFWEEK))
+            val item = ListExecution()
+            item.taskEX_ID = dataIDtask
+            item.ex_date = dataEXday
+            dataList.add(item)
 
         }
         cursor.close()
 
         return dataList
+
     }
+
 
     fun removeExecution(id: Int){
         Log.d("Mylog","удаление  ex по id  $id")

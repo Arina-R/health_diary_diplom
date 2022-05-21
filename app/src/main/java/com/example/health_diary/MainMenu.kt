@@ -4,15 +4,23 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
+import android.widget.CheckBox
+import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.health_diary.db.IntentConstTask
 import com.google.android.material.navigation.NavigationView
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class MainMenu : AppCompatActivity(),NavigationView.OnNavigationItemSelectedListener {
@@ -21,12 +29,15 @@ class MainMenu : AppCompatActivity(),NavigationView.OnNavigationItemSelectedList
     val tAdapter = com.example.health_diary.db.AdapterTask(ArrayList(),this)
 
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_menu)
         val nav_view = findViewById<NavigationView>(R.id.nav_view)
         nav_view.setNavigationItemSelectedListener (this)
         init()
+
 
         //одноразовое использование в проге(при первом запуске)
         val settings = ""
@@ -46,25 +57,53 @@ class MainMenu : AppCompatActivity(),NavigationView.OnNavigationItemSelectedList
         }
     }
 
+    private fun getSwapMg(): ItemTouchHelper {
+        return ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0,
+            ItemTouchHelper.RIGHT or ItemTouchHelper.LEFT){
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                return  false
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                tAdapter.checkedTask(viewHolder.adapterPosition, DbManager)
+                fillAdapter()
+
+            }
+        })
+    }
 
     fun init(){
 
         val rc_main = findViewById<RecyclerView>(R.id.rc_main)
 
+
         rc_main.layoutManager = LinearLayoutManager(this)
+        val swapHelper = getSwapMg()
+        swapHelper.attachToRecyclerView(rc_main)
         rc_main.adapter = tAdapter
+
 
    }
 
+    private fun getTime(): String {
+        val time = Calendar.getInstance().time
+        val formatter = SimpleDateFormat("EEE", Locale.getDefault())
+        return formatter.format(time)
+
+    }
+
 
     fun fillAdapter(){
-
-        tAdapter.updateAdapter(DbManager.readTasksData())
+        tAdapter.updateAdapter(DbManager.readExecutionData(getTime()))
 
     }
 
     fun createTask(view: View){
-        val intent = Intent(this, PageCreate::class.java)
+        val intent = Intent(this, Create_H_W::class.java)
         startActivity(intent)
     }
 
@@ -77,9 +116,6 @@ class MainMenu : AppCompatActivity(),NavigationView.OnNavigationItemSelectedList
             drawerL.openDrawer(GravityCompat.START)
         }
     }
-
-
-
 
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {

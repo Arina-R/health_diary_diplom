@@ -191,7 +191,7 @@
         android:background="@drawable/back_dinner"
         android:foreground="@drawable/back_dinner"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/b_breakfast"
+        app:layout_constraintTop_toBottomOf="@+id/b_breakfast2"
         tools:ignore="TouchTargetSizeCheck" />
 
     <Button
@@ -216,7 +216,7 @@
         android:background="@drawable/back_snack"
         android:foreground="@drawable/back_snack"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/b_lunch" />
+        app:layout_constraintTop_toBottomOf="@+id/b_lunch2" />
 
     <Button
         android:id="@+id/b_snack"
@@ -228,7 +228,7 @@
         android:foreground="@drawable/snack"
         android:onClick="sneck"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/b_lunch" />
+        app:layout_constraintTop_toBottomOf="@+id/b_lunch2" />
 
     <Button
         android:id="@+id/b_save_pitanie"

@@ -44,6 +44,44 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <CalendarView
+            android:id="@+id/calendarView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="70dp"
+            android:background="@drawable/rounded"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/TV_count"
+            android:layout_width="300dp"
+            android:layout_height="90dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/greybox"
+            android:gravity="center"
+            android:text="Выберите день "
+            android:fontFamily="@font/bebas_neue"
+            android:textColor="@color/maincolor"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/calendarView" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="300dp"
+            android:layout_height="90dp"
+            android:layout_marginTop="35dp"
+            android:background="@drawable/rounded"
+            android:onClick="click"
+            android:text="Просмотреть питание в этот день"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TV_count" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.navigation.NavigationView
@@ -53,6 +91,7 @@
         android:layout_gravity="start"
         android:background="@drawable/rounded"
         android:fitsSystemWindows="true"
+        android:visibility="gone"
         app:headerLayout="@layout/header_menu"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
