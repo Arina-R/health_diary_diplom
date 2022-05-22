@@ -55,7 +55,6 @@ class Create_H_W : AppCompatActivity() {
 
                 var layoutHide = findViewById<ConstraintLayout>(R.id.hideWeek)
                 layoutHide.visibility = View.GONE
-                Log.d("Mylog","------------------------------------проверка id привычки $id")
             }
         }
     }
@@ -65,12 +64,13 @@ class Create_H_W : AppCompatActivity() {
         DbManager.openDb()
     }
     fun back(view: View){
-        val intent = Intent(this, PageMenuStat::class.java)
+        val intent = Intent(this, MainMenu::class.java)
         startActivity(intent)
     }
 
-    lateinit var time : String
+     var time = ""
     var type  = 0
+     var ww = 0
 
     fun morning(view: View){
         time = "Утро"
@@ -124,7 +124,7 @@ class Create_H_W : AppCompatActivity() {
 
     fun mon(view: View){
         m = 2
-       // checkDay()
+        ww = 1
         val mon = findViewById<Button>(R.id.b_mon)
         val monb = findViewById<Button>(R.id.b_mon2)
         if (m==2){
@@ -135,7 +135,7 @@ class Create_H_W : AppCompatActivity() {
     }
     fun tue(view: View){
         tu = 2
-      //  checkDay()
+        ww = 1
         val tue = findViewById<Button>(R.id.b_tue)
         val tueb = findViewById<Button>(R.id.b_tue2)
         if (tu==2){
@@ -146,7 +146,7 @@ class Create_H_W : AppCompatActivity() {
     }
     fun wed(view: View){
         w = 2
-      //  checkDay()
+        ww = 1
         val wed = findViewById<Button>(R.id.b_wed)
         val wedb = findViewById<Button>(R.id.b_wed2)
         if (w==2){
@@ -157,7 +157,7 @@ class Create_H_W : AppCompatActivity() {
     }
     fun thu(view: View){
         th = 2
-      // checkDay()
+        ww = 1
         val thu = findViewById<Button>(R.id.b_thu)
         val thub = findViewById<Button>(R.id.b_thu2)
         if (th==2){
@@ -168,7 +168,7 @@ class Create_H_W : AppCompatActivity() {
     }
     fun fri(view: View){
         f = 2
-      //  checkDay()
+        ww = 1
         val fri = findViewById<Button>(R.id.b_fri)
         val frib = findViewById<Button>(R.id.b_fri2)
         if (f==2){
@@ -179,7 +179,7 @@ class Create_H_W : AppCompatActivity() {
     }
     fun sat(view: View){
         sa = 2
-      //  checkDay()
+        ww = 1
         val sat = findViewById<Button>(R.id.b_sat)
         val satb = findViewById<Button>(R.id.b_sat2)
         if (sa==2){
@@ -190,7 +190,7 @@ class Create_H_W : AppCompatActivity() {
     }
     fun sun(view: View){
         su = 2
-        //checkDay()
+        ww = 1
         val sun = findViewById<Button>(R.id.b_sun)
         val sunb = findViewById<Button>(R.id.b_sun2)
         if (su==2){
@@ -285,54 +285,73 @@ class Create_H_W : AppCompatActivity() {
 
     }
 
+    fun hideHW(view: View){
+        var lay = findViewById<ConstraintLayout>(R.id.errorPanelHW)
+        lay.visibility = View.GONE
+
+        var et = findViewById<EditText>(R.id.ET_title)
+        et.setText("")
+
+    }
+
     fun savetask(view: View){
 
 
         var et = findViewById<EditText>(R.id.ET_title)
+        var err = findViewById<ConstraintLayout>(R.id.errorPanelHW)
 
-        if(isEdit){
-            DbManager.updatetask(et.text.toString(),time,type,1,id)
-        }else {
-            DbManager.insertToUTask(et.text.toString(), time, type, 1)
+        if(et.text.toString() == ""|| et.text.toString() == " " || type == 0 || time == "" || ww == 0){
+
+            err.visibility = View.VISIBLE
+
         }
-        var idS = DbManager.readSequence()
-
-        //insert to execution
+        else {
 
 
-        var iii=  idS.toString()
-        var itog = iii.substringAfter('[')
-        itog = itog.substringBeforeLast(']')
-        var itogId = Integer.parseInt(itog)
+            if (isEdit) {
+                DbManager.updatetask(et.text.toString(), time, type, 1, id)
+            } else {
+                DbManager.insertToUTask(et.text.toString(), time, type, 1)
+            }
+            var idS = DbManager.readSequence()
+
+            //insert to execution
 
 
-        if (m==2){
-           DbManager.insertToExecution(itogId,"Mon")
+            var iii = idS.toString()
+            var itog = iii.substringAfter('[')
+            itog = itog.substringBeforeLast(']')
+            var itogId = Integer.parseInt(itog)
+
+
+            if (m == 2) {
+                DbManager.insertToExecution(itogId, "пн")
+            }
+            if (tu == 2) {
+                DbManager.insertToExecution(itogId, "вт")
+            }
+            if (w == 2) {
+                DbManager.insertToExecution(itogId, "ср")
+            }
+            if (th == 2) {
+                DbManager.insertToExecution(itogId, "чт")
+            }
+            if (f == 2) {
+                DbManager.insertToExecution(itogId, "пт")
+            }
+            if (sa == 2) {
+                DbManager.insertToExecution(itogId, "сб")
+            }
+            if (su == 2) {
+                DbManager.insertToExecution(itogId, "вс")
+            }
+
+
+            finish()
+
+            val intent = Intent(this, MainMenu::class.java)
+            startActivity(intent)
         }
-        if (tu==2){
-            DbManager.insertToExecution(itogId,"Tue")
-        }
-        if (w==2){
-            DbManager.insertToExecution(itogId,"Wed")
-        }
-        if (th==2){
-            DbManager.insertToExecution(itogId,"Thu")
-        }
-        if (f ==2){
-            DbManager.insertToExecution(itogId,"Fri")
-        }
-        if (sa==2){
-            DbManager.insertToExecution(itogId,"Sat")
-        }
-        if (su==2){
-            DbManager.insertToExecution(itogId,"Sun")
-        }
-
-
-        finish()
-
-        val intent = Intent(this, MainMenu::class.java)
-        startActivity(intent)
     }
 
     override fun onDestroy() {

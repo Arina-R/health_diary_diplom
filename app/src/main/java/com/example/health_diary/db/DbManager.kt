@@ -87,31 +87,6 @@ class DbManager(context: Context) {
 
     }
 
-    fun readTasksData() : ArrayList<ListItemForHabits>{
-        val dataList = ArrayList<ListItemForHabits>()
-
-
-        val cursor = db?.query(DbnameClass.TABLE_TASK,null,null,null,null,null,null)
-
-        while (cursor?.moveToNext()!!){
-            val dataIdUser = cursor?.getInt(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_IDUSER))
-            val dataTitile = cursor?.getString(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_TASKTITLE))
-            val dataIdType = cursor?.getInt(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_IDTYPE))
-            val dataTime = cursor?.getString(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_TIME))
-            val dataTid = cursor?.getInt(cursor.getColumnIndexOrThrow(DbnameClass.COLUMN_idTask))
-            val item = ListItemForHabits()
-            item.useridTask = dataIdUser
-            item.task_title = dataTitile
-            item.typeidTask = dataIdType
-            item.timeTask = dataTime
-            item.task_ID = dataTid
-            dataList.add(item)
-
-        }
-        cursor.close()
-
-        return dataList
-    }
 
     fun readHabitData() : ArrayList<ListItemForHabits>{
         val dataList = ArrayList<ListItemForHabits>()
@@ -435,7 +410,6 @@ class DbManager(context: Context) {
         return dataList
 
     }
-
 
     fun removeExecution(id: Int){
         Log.d("Mylog","удаление  ex по id  $id")

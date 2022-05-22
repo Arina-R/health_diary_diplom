@@ -43,8 +43,7 @@ class AdapterMenu (listMenu:ArrayList<ListMenu>, contextM: Context1): RecyclerVi
                 var itogcalor = calor.substringAfter('[')
                 itogcalor = itogcalor.substringBeforeLast(']')
                 var itogCAL = Integer.parseInt(itogcalor)
-
-                var sumcal = itemMenu.menu_quant.toInt() * itogCAL
+                var sumcal = itemMenu.menu_quant.toDouble() * itogCAL / 100
                 tvQua.text= "$sumcal калл.(${itemMenu.menu_quant.toInt()}г.)"
             }
 

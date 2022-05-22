@@ -33,13 +33,9 @@ class AdapterTask(listTask:ArrayList<ListExecution>,contextT: Context): Recycler
             val time = Calendar.getInstance().time
             val formatter = SimpleDateFormat("dd.M.yyyy", Locale.getDefault())
             return formatter.format(time)
+
         }
 
-        fun getWeekDay(): String{
-            val time = Calendar.getInstance().time
-            val formatter = SimpleDateFormat("EEE", Locale.getDefault())
-            return formatter.format(time)
-        }
 
         fun setData(item: ListExecution){
 
@@ -59,14 +55,12 @@ class AdapterTask(listTask:ArrayList<ListExecution>,contextT: Context): Recycler
                         var itogId = Integer.parseInt(itog)
 
                         tvTitle.text = titITOG
-                        Log.d("Mylog","try ${tvTitle.text}")
                         if (itogId == 1) {
                             chBOX.isChecked = true
                             tvTitle.text = titITOG
                         }
                     } catch (e: Exception) {
                         tvTitle.text = titITOG
-                        Log.d("Mylog","catch ${tvTitle.text}")
                     }
         }
     }
@@ -103,7 +97,6 @@ class AdapterTask(listTask:ArrayList<ListExecution>,contextT: Context): Recycler
     fun checkedTask(pos: Int, dbManager: DbManager ) {
 
        var exsist = dbManager.readStaticDataForTask(listArray[pos].taskEX_ID, getTime())
-        Log.d("Mylog","catch ${exsist.toString()}")
         if(exsist.toString() == "[]") {
             dbManager.insertToStatic(listArray[pos].taskEX_ID, getTime(), true)
         }

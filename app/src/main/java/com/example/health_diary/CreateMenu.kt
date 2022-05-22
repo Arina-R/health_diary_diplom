@@ -7,6 +7,8 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.health_diary.db.IntentConstFood
 import java.text.SimpleDateFormat
 import java.util.*
@@ -16,7 +18,7 @@ class CreateMenu : AppCompatActivity() {
     val DbManager = com.example.health_diary.db.DbManager(this)
     var isEdit = false
     var id = 0
-
+    var eat = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,21 +26,57 @@ class CreateMenu : AppCompatActivity() {
         Log.d("Mylog","Time:"+getTime())
         getMyIntents()
     }
+
+    fun hideM(view: View){
+        var lay = findViewById<ConstraintLayout>(R.id.errorPanelM)
+        lay.visibility = View.GONE
+
+        var etTit = findViewById<EditText>(R.id.ET_quantity2)
+        var etG = findViewById<EditText>(R.id.ET_quantity)
+        etTit.setText("")
+        etG.setText("")
+    }
+
     fun savePitanie(view: View){
         var etQuantity = findViewById<EditText>(R.id.ET_quantity)
-        var quant = Integer.parseInt(etQuantity.getText().toString())
 
-         DbManager.insertToMenu(1,id,quant,eat,getTime())
+        var etTit = findViewById<EditText>(R.id.ET_quantity2)
 
-        val intent = Intent(this, Nav_Pitanie::class.java)
-        startActivity(intent)
+        if(etQuantity.text.toString() == "" || etQuantity.text.toString() == " " || etTit.text.toString() == " " || etTit.text.toString() == "" || eat == ""){
+
+
+            if(id == 0 ){
+                var textER = findViewById<TextView>(R.id.textView19)
+                textER.text = "Выберите продукт из списка"
+                var lay = findViewById<ConstraintLayout>(R.id.errorPanelM)
+                lay.visibility = View.VISIBLE
+
+
+            }
+            else {
+                var lay = findViewById<ConstraintLayout>(R.id.errorPanelM)
+                lay.visibility = View.VISIBLE
+            }
+
+
+        }
+        else {
+
+
+                var quant = Integer.parseInt(etQuantity.getText().toString())
+                DbManager.insertToMenu(1, id, quant, eat, getTime())
+
+                val intent = Intent(this, Nav_Pitanie::class.java)
+                startActivity(intent)
+
+        }
     }
     fun back(view: View){
         val intent = Intent(this, Nav_Pitanie::class.java)
         startActivity(intent)
     }
 
-    lateinit var eat : String
+
 
     fun breakfast(view: View){
         eat = "Завтрак"

@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,25 +20,34 @@ class MainActivity : AppCompatActivity() {
     val wr = "Тренировка"
     val hb = "Привычка"
 
+    fun hideA(view: View){
+        var lay = findViewById<ConstraintLayout>(R.id.errorPanelA)
+        lay.visibility = View.GONE
+
+        var et = findViewById<EditText>(R.id.EdiTextName)
+        et.setText("")
+
+    }
 
     fun autorization(view: View){
 
         var et = findViewById<EditText>(R.id.EdiTextName)
 
+        if(et.text.toString() == ""){
+            var lay = findViewById<ConstraintLayout>(R.id.errorPanelA)
+            lay.visibility = View.VISIBLE
 
-       DbManager.openDb()
-      DbManager.insertToUsers(et.text.toString())
-        DbManager.insertToType(wr)
-        DbManager.insertToType(hb)
-
-//вывод в текст вью
-/* val dataList = DbManager.readTypeData()
-        for(item in dataList){
-            tv.append(item)
         }
+        else {
 
-     val intent = Intent(this, MainMenu::class.java)
-        startActivity(intent)*/
+            DbManager.openDb()
+            DbManager.insertToUsers(et.text.toString())
+            DbManager.insertToType(wr)
+            DbManager.insertToType(hb)
+
+            val intent = Intent(this, MainMenu::class.java)
+            startActivity(intent)
+        }
     }
 
 

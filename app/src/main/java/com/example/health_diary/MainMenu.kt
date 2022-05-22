@@ -85,6 +85,7 @@ class MainMenu : AppCompatActivity(),NavigationView.OnNavigationItemSelectedList
         val swapHelper = getSwapMg()
         swapHelper.attachToRecyclerView(rc_main)
         rc_main.adapter = tAdapter
+        Toast.makeText(this,"${getTime()}", Toast.LENGTH_SHORT).show()
 
 
    }
@@ -99,12 +100,12 @@ class MainMenu : AppCompatActivity(),NavigationView.OnNavigationItemSelectedList
 
     fun fillAdapter(){
         tAdapter.updateAdapter(DbManager.readExecutionData(getTime()))
-
     }
 
     fun createTask(view: View){
         val intent = Intent(this, Create_H_W::class.java)
         startActivity(intent)
+
     }
 
 
@@ -121,23 +122,17 @@ class MainMenu : AppCompatActivity(),NavigationView.OnNavigationItemSelectedList
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
 
         when(item.itemId){
-            R.id.id_gl ->{ Toast.makeText(this,"gl menu",Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, MainMenu::class.java)
+            R.id.id_gl ->{ val intent = Intent(this, MainMenu::class.java)
                 startActivity(intent)}
-            R.id.id_norm -> {Toast.makeText(this,"norma",Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, Nav_Norma::class.java)
+            R.id.id_norm -> {val intent = Intent(this, Nav_Norma::class.java)
                 startActivity(intent)}
-            R.id.id_pit -> {Toast.makeText(this,"pitanie",Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, Nav_Pitanie::class.java)
+            R.id.id_pit -> {val intent = Intent(this, Nav_Pitanie::class.java)
                 startActivity(intent)}
-            R.id.id_stat -> {Toast.makeText(this,"statistica",Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, Nav_Stat::class.java)
+            R.id.id_stat -> {val intent = Intent(this, Nav_Stat::class.java)
                 startActivity(intent)}
-            R.id.id_workout -> {Toast.makeText(this,"workout",Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, Nav_Workout::class.java)
+            R.id.id_workout -> {val intent = Intent(this, Nav_Workout::class.java)
                 startActivity(intent)}
-            R.id.id_habit -> {Toast.makeText(this,"habit",Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, Nav_habit::class.java)
+            R.id.id_habit -> {val intent = Intent(this, Nav_habit::class.java)
                 startActivity(intent)}
         }
 
